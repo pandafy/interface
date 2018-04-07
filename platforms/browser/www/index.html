@@ -61,9 +61,12 @@
             </div>
 
             <div class="ui-content" role="main" inset="true">
-                <p align='center'><a href="#markAttend" class="ui-btn" item-width="100%">Mark today's attendance</a></p>
-                <p align='center'><a href="#analyzeAttend" class="ui-btn" item-width="100%">Analyze Attendance</a></p>
-                <p align='center'><a href="#home" class="ui-btn" item-width="100%">Something else</a></p>
+                <br><br><br>
+                <p >
+                    <a href="#monday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#home"  data-inline="true" data-role="button">Something else</a>
+                </p>
             </div>
         </div>
 
@@ -77,6 +80,49 @@
             </div>
         </div>
         
+        <div data-role="page" id='monday'  >
+            <div data-role="header">
+                <h2>Mark Attendance</h2>
+                <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Monday</h3>
+                <p>
+                    <table data-role="table" id="table-monday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>Physics</td>
+                                <td><input type="radio" name='Phy' value=1></td>
+                                <td><input type="radio" name='Phy' value="0"></td>
+                                <td><input type="radio" name='Phy' value="-1"></td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td><input type="radio" name='Mth' value=1></td>
+                                <td><input type="radio" name='Mth' value="0"></td>
+                                <td><input type="radio" name='Mth' value="-1"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Engineering Mechanics</td>
+                                <td><input type="radio" name='EM' value=1></td>
+                                <td><input type="radio" name='EM' value="0"></td>
+                                <td><input type="radio" name='EM' value="-1"></td>
+                            </tr>
+                                <td>Introduction to Programming</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+            </div>
+        </div>
+
         <div data-role="page" id="analyzeAttend">
             <div data-role="header" data-position="fixed">
                 <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
@@ -93,7 +139,12 @@
             </div>
 
             <div role="main" class="ui-content">
-                <h2>Next Page</h2>
+                
+                    <label for="pName" class="ui-hidden-accessible">Text Input:</label>
+                        <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
+                    <label for="pSum" class="ui-hidden-accessible" >Submit</label>
+                        <input type="submit" id="pSum" name="submit" value="submit" >
+                
             </div>
         </div>
         
