@@ -2632,7 +2632,7 @@ li.ui-block-e {
 		float: none; 
 	}
 }
-/* fixed page header & footer configuration */
+/* fixed page header & footer config@ration */
 .ui-header-fixed,
 .ui-footer-fixed {
 	left: 0;
@@ -4354,42 +4354,42 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 }
 /* Preset breakpoints if ".ui-responsive" class added to table */
 /* Show priority 1 at 320px (20em x 16px) */
-@media screen and (min-width: 20em) {
+@media screen and (min-width: 1em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-1,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-1 {
 		display: table-cell;
 	}
 }
 /* Show priority 2 at 480px (30em x 16px) */
-@media screen and (min-width: 30em) {
+@media screen and (min-width: 10em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-2,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-2 {
 		display: table-cell;
 	}
 }
 /* Show priority 3 at 640px (40em x 16px) */
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 10em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-3,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-3 {
 		display: table-cell;
 	}
 }
 /* Show priority 4 at 800px (50em x 16px) */
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 10em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-4,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-4 {
 		display: table-cell;
 	}
 }
 /* Show priority 5 at 960px (60em x 16px) */
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 10em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-5,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-5 {
 		display: table-cell;
 	}
 }
 /* Show priority 6 at 1,120px (70em x 16px) */
-@media screen and (min-width: 70em) {
+@media screen and (min-width: 10em) {
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-6,
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-6 {
 		display: table-cell;
@@ -4453,7 +4453,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 	}
 }
 /* Breakpoint to show as a standard table at 560px (35em x 16px) or wider */ 
-@media ( min-width: 35em ) {
+@media ( min-width: 5em ) {
 	/* Show the table header rows */ 
 	.ui-table-reflow.ui-responsive td,
 	.ui-table-reflow.ui-responsive th,
@@ -4475,11 +4475,13 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 @media ( max-width: 35em ) {
 	.ui-table-reflow.ui-responsive td,
 	.ui-table-reflow.ui-responsive th {
-		width: 100%;
+		max-width:100%;
+		border:2px;
+		text-align: center;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-		float: left;
+		float: center;
 		clear: left;
 	}
 }
