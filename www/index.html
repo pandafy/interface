@@ -154,27 +154,39 @@
             </div>
 
             <div role="main" class="ui-content">
+                <form>
+                    <h2> Sign Up</h2>
+                    <label> Name *     </label>
+                    <input name="name" type="text"placeholder="Your Name" required><br>
+                    <label> Course *    </label>
+                    <select name="course" required >
+                        <option>Choose From Dropdown List</option>
+                        <option value="cse">CSE</option>
+                        <option value="ece">ECE</option>
+                        <option value="mae">MAE</option>
+                    </select><br>
+                    <label> Roll No. *   </label>
+                    <input name="roll" type="number"placeholder="Your Roll No."required><br>
+                    <label> Email * </label>
+                    <input name="email" type="email"placeholder="Your Email"required><br>
+                    <label> Password * </label>
+                    <input name="pass" type="password"placeholder="Password"required><br><br>
+                    <h3>*Fields are mandatory.</h3>
+                    <input type="submit" value="SUBMIT">
+                    </form>       
+    
                 
-                    <label for="pName" class="ui-hidden-accessible">Text Input:</label>
-                        <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
-                    <label for="pSum" class="ui-hidden-accessible" >Submit</label>
-                        <p><a id="yxy">asdsadad</a></p>
-                
-            <script>
-                $('#yxy').click(function() {
-                    alert("it is clicked");
-                })
-            </script>
+            
             </div>
         </div>
 
 <!--WORKING AREA FOR VISHAL AND GAGAN-->
-        <div data-role="page" id="settings">
+        <div data-role="page" id="settings" data-theme="a">
             <div data-role="header"> <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
             <div role="main" class="ui-content">
-                <label for="theme-flip" data-mini="true" onBlur="save()">Theme</label>
+                <label for="theme-flip" data-mini="true">Theme</label>
                 <select name="theme-flip" id="theme-flip" data-mini="true" data-role="slider">
                     <option value="Light">Light</option>
                     <option value="Dark">Dark</option>

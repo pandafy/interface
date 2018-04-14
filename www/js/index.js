@@ -15,6 +15,7 @@ function loadProfile()
 {
     alert('inside loadprofile');
     alert($('#pName').val(localStorage.pName));
+    
 }
 
 
@@ -42,7 +43,14 @@ function saveProfile()
 $(document).on('change','#theme-flip',function() {
     if($('#theme-flip option:selected').attr('value')=='Dark'){
         alert("dark theme");
+        theme_change();
     }
     else
         alert("light theme");
 });
+
+function theme_change()
+{
+    $('#settings').prop('data-theme')='e';
+    localStorage.theme='e';
+}
