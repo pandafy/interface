@@ -42,6 +42,12 @@ function saveProfile()
 $(document).on('change','#theme-flip',function() {
     if($('#theme-flip option:selected').attr('value')=='Dark'){
         alert("dark theme");
+        localStorage.theme="a";
+        
+        alert(localStorage.theme);
+        $('#settings').attr('data-theme',"b").trigger('create');
+    
+        
     }
     else
         alert("light theme");
