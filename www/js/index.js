@@ -5,6 +5,7 @@ document.addEventListener('deviceready',init(),false);
 
 function init()
 {
+    $('#S1Name').attr("placeholder",localStorage.S1Name);
     $(document).on('click','#test5',function(){
     alert("reached click");    
     ahoy();
@@ -47,6 +48,12 @@ var S1=new subject('Physics',0,0,0);
         alert("Hey");
     }   
 
+$(document).on('click','#SubSubmit',function(){
+    localStorage.S1Name=$("#S1Name").val();
+    //check if it is stored
+    alert(localStorage.S1Name);
+    $('#S1Name').attr("placeholder",localStorage.S1Name);
+})
 
 
 
