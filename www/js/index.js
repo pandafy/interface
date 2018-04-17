@@ -5,10 +5,10 @@ document.addEventListener('deviceready',init(),false);
 
 function init()
 {
-    
-    $('#yxy').click(function(){
-        alert("The paragraph was clicked.");
-    });
+    $(document).on('click','#test5',function(){
+    alert("reached click");    
+    ahoy();
+   });
 }
 
 function loadProfile()
@@ -23,6 +23,31 @@ function loadProfile()
 
 
 //Edit Team
+function subject(name, no_class,absent,present) {
+    this.name = name;
+    this.no_class=no_class;
+    this.present=present;
+    this.absent=absent;
+    }
+
+subject.Present=function(){
+    this.present++;
+    this.no_class++;
+}
+
+subject.Absent=function(){
+    this.absent++;
+    this.no_class++;
+}
+
+var S1=new subject('Physics',0,0,0);
+    
+    function ahoy(){
+        alert(S1.name);
+        alert("Hey");
+    }   
+
+
 
 
 //Profile Team
