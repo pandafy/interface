@@ -5,16 +5,26 @@ document.addEventListener('deviceready',init(),false);
 
 function init()
 {
+    $(document).on('pagebeforevreate','#profile',function(event){
+        loadProfile();
+    });
+    
     
     $(document).on('click','#pSubmit',function(){
         saveProfile();
     });
+    
+    
+       
+    
+    
 }
 
 function loadProfile()
 {
     alert('inside loadprofile');
-    alert($('#pName').val(localStorage.pName));
+    alert(localStorage.pName);
+    $('#pName').attr("placeholder","ahoy");
     
 }
 
@@ -31,10 +41,15 @@ function saveProfile()
 {   
     alert('inside save profile');
     localStorage.pName=$('#pName').val();
+    $('#pName').placeholder=localStorage.pName;
+    
     localStorage.pCourse=$('#pCourse').val();
     localStorage.pRoll=$('#pRoll').val();
     localStorage.pEmail=$('#pEmail').val();
-    alert($('#pName').val(localStorage.pName));
+    alert(localStorage.pName);
+    $('#pName').attr("placeholder",'hello');
+    
+    
 }
 
 //Analysis Team

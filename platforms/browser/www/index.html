@@ -46,7 +46,8 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div data-role="page" id="home">
+<!--The HOME page is common for all. Tweak it as per your requirement-->
+        <div data-role="page" id="home" data-theme="a">
             <div data-role=header data-position="fixed">
                 <h2>Attendance Register</h2>
                 <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
@@ -65,12 +66,12 @@
                 <p >
                     <a href="#monday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
                     <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
-                    <a href="#home"  data-inline="true" data-role="button">Something else</a>
+                    <a href="#edit"  data-inline="true" data-role="button">Edit</a>
                 </p>
             </div>
         </div>
-
-        <div data-role="page" id="markAttend">
+<!-- WORKING AREA FOR AAYUSH AND GAGAN-->
+        <div data-role="page" id="markAttend" data-theme="a">
             <div data-role="header" data-position="ficed">
                 <h1>Mark Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
@@ -80,7 +81,7 @@
             </div>
         </div>
         
-        <div data-role="page" id='monday'  >
+        <div data-role="page" id='monday'  data-theme="a">
             <div data-role="header">
                 <h2>Mark Attendance</h2>
                 <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
@@ -123,6 +124,7 @@
             </div>
         </div>
 
+<!--WORKING AREA FOR ASHISH AND KUSHAGRA -->
         <div data-role="page" id="analyzeAttend">
             <div data-role="header" data-position="fixed">
                 <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
@@ -133,28 +135,64 @@
             </div>
         </div>
 
+<!--WORKING AREA FOR MOHIT AND GAGAN-->
+    <div data-role="page" id="edit">
+        <div data-role="header" data-position="fixed">
+            <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h2>Next Page</h2>
+        </div>
+    </div>
+
+
+<!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
         <div data-role="page" id="profile">
             <div data-role="header" >
                 <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
-            <div role="main" class="ui-content">
+            <div role="main" class="ui-body-b">
+                <form>
+                    <h2> Sign Up</h2>
+                    <label> Name *     </label>
+                    <input id="pName" name="name" type="text" placeholder="Your Name" required><br>
+                    <label> Course *    </label>
+                    <select id="pCourse" name="course"  >
+                        <option value="">Choose From Dropdown List</option>
+                        <option value="cse">CSE</option>
+                        <option value="ece">ECE</option>
+                        <option value="mae">MAE</option>
+                    </select><br>
+                    <label> Roll No. *   </label>
+                    <input id="pRoll" name="roll" type="number"placeholder="Your Roll No."required><br>
+                    <label> Email * </label>
+                    <input id="pEmail" name="email" type="email"placeholder="Your Email"required><br>
+                    <!--<label> Password * </label>
+                    <input id="pass" name="pass" type="password"placeholder="Password"required>--><br><br>
+                    <h3>*Fields are mandatory.</h3>
+                    <input type="submit" value="SUBMIT" id="pSubmit">
+                </form>
+
+                <button id="test24"> test placeholder</button>
+    
                 
-                    <label for="pName" class="ui-hidden-accessible">Text Input:</label>
-                        <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
-                    <label for="pSum" class="ui-hidden-accessible" >Submit</label>
-                        <input type="submit" id="pSum" name="submit" value="submit" >
-                
+            
             </div>
         </div>
-        
-        <div data-role="page" id="settings">
-            <div data-role="header">
-                <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+
+<!--WORKING AREA FOR VISHAL AND GAGAN-->
+        <div data-role="page" id="settings" data-theme="a">
+            <div data-role="header"> <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
             <div role="main" class="ui-content">
-                <h2>Next Page</h2>
+                <label for="theme-flip" data-mini="true">Theme</label>
+                <select name="theme-flip" id="theme-flip" data-mini="true" data-role="slider">
+                    <option value="Light">Light</option>
+                    <option value="Dark">Dark</option>
+                </select>
             </div>
         </div>
         
@@ -162,3 +200,4 @@
 
     </body>
 </html>
+              
