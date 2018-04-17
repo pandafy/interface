@@ -6,8 +6,8 @@ document.addEventListener('deviceready',init(),false);
 function init()
 {
     
-    $('#yxy').click(function(){
-        alert("The paragraph was clicked.");
+    $(document).on('click','#pSubmit',function(){
+        saveProfile();
     });
 }
 
@@ -31,8 +31,9 @@ function saveProfile()
 {   
     alert('inside save profile');
     localStorage.pName=$('#pName').val();
-    localStorage.pPollege=$('#pCollege').val();
-    localStorage.pAge=$('#pAge').val();
+    localStorage.pCourse=$('#pCourse').val();
+    localStorage.pRoll=$('#pRoll').val();
+    localStorage.pEmail=$('#pEmail').val();
     alert($('#pName').val(localStorage.pName));
 }
 

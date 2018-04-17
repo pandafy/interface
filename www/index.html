@@ -154,26 +154,26 @@
             </div>
 
             <div role="main" class="ui-body-b">
-                <form>
+                
                     <h2> Sign Up</h2>
                     <label> Name *     </label>
-                    <input name="name" type="text"placeholder="Your Name" required><br>
+                    <input id="pName" name="name" type="text" placeholder="Your Name" required><br>
                     <label> Course *    </label>
-                    <select name="course" required >
-                        <option>Choose From Dropdown List</option>
+                    <select id="pCourse" name="course"  >
+                        <option value="">Choose From Dropdown List</option>
                         <option value="cse">CSE</option>
                         <option value="ece">ECE</option>
                         <option value="mae">MAE</option>
                     </select><br>
                     <label> Roll No. *   </label>
-                    <input name="roll" type="number"placeholder="Your Roll No."required><br>
+                    <input id="pRoll" name="roll" type="number"placeholder="Your Roll No."required><br>
                     <label> Email * </label>
-                    <input name="email" type="email"placeholder="Your Email"required><br>
-                    <label> Password * </label>
-                    <input name="pass" type="password"placeholder="Password"required><br><br>
+                    <input id="pEmail" name="email" type="email"placeholder="Your Email"required><br>
+                    <!--<label> Password * </label>
+                    <input id="pass" name="pass" type="password"placeholder="Password"required>--><br><br>
                     <h3>*Fields are mandatory.</h3>
-                    <input type="submit" value="SUBMIT">
-                    </form>       
+                    <input type="submit" value="SUBMIT" id="pSubmit">
+                           
     
                 
             
