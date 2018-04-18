@@ -46,7 +46,8 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div data-role="page" id="home">
+<!--The HOME page is common for all. Tweak it as per your requirement-->
+        <div data-role="page" id="home" data-theme="a">
             <div data-role=header data-position="fixed">
                 <h2>Attendance Register</h2>
                 <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
@@ -65,12 +66,12 @@
                 <p >
                     <a href="#monday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
                     <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
-                    <a href="#home"  data-inline="true" data-role="button">Something else</a>
+                    <a href="#edit"  data-inline="true" data-role="button">Edit</a>
                 </p>
             </div>
         </div>
-
-        <div data-role="page" id="markAttend">
+<!-- WORKING AREA FOR AAYUSH AND GAGAN-->
+        <div data-role="page" id="markAttend" data-theme="a">
             <div data-role="header" data-position="ficed">
                 <h1>Mark Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
@@ -80,7 +81,7 @@
             </div>
         </div>
         
-        <div data-role="page" id='monday'  >
+        <div data-role="page" id='monday'  data-theme="a">
             <div data-role="header">
                 <h2>Mark Attendance</h2>
                 <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
@@ -123,6 +124,7 @@
             </div>
         </div>
 
+<!--WORKING AREA FOR ASHISH AND KUSHAGRA -->
         <div data-role="page" id="analyzeAttend">
             <div data-role="header" data-position="fixed">
                 <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
@@ -133,6 +135,36 @@
             </div>
         </div>
 
+<!--WORKING AREA FOR MOHIT AND GAGAN-->
+    <div data-role="page" id="edit">
+        <div data-role="header" >
+            <h1>Edit Utility</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+        </div>
+
+        <div role="main" class="ui-content">
+            <a href="#EditSubject" data-role="button">Edit Subjects</a></button>
+        </div>
+    </div>
+
+    <div data-role="page" id="EditSubject">
+        <div data-role="header">
+            <h1>Edit Subjects</h1><a href="#edit" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
+        </div>
+        <div role="main" class="ui-content">
+            <form>
+            <input id="S1Name" type="text" placeholder="Subject 1 Name" value="S1Name">
+            <input id="S2Name" type="text" placeholder="Subject 2 Name" value="S2Name">
+            <input id="S3Name" type="text" placeholder="Subject 3 Name" value="S3Name">
+            <input id="S4Name" type="text" placeholder="Subject 4 Name" value="S4Name">
+            <input id="S5Name" type="text" placeholder="Subject 5 Name" value="S5Name">
+            <input type="submit" id="SubSubmit">
+            </form>
+            <a data-role="button">placeholder testing</a>
+        </div>
+    </div>
+
+
+<!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
         <div data-role="page" id="profile">
             <div data-role="header" >
                 <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
@@ -143,18 +175,27 @@
                     <label for="pName" class="ui-hidden-accessible">Text Input:</label>
                         <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
                     <label for="pSum" class="ui-hidden-accessible" >Submit</label>
-                        <input type="submit" id="pSum" name="submit" value="submit" >
+                        <p><a id="yxy">asdsadad</a></p>
                 
+            <script>
+                $('#yxy').click(function() {
+                    alert("it is clicked");
+                })
+            </script>
             </div>
         </div>
-        
+
+<!--WORKING AREA FOR VISHAL AND GAGAN-->
         <div data-role="page" id="settings">
-            <div data-role="header">
-                <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+            <div data-role="header"> <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
             <div role="main" class="ui-content">
-                <h2>Next Page</h2>
+                <label for="theme-flip" data-mini="true" onBlur="save()">Theme</label>
+                <select name="theme-flip" id="theme-flip" data-mini="true" data-role="slider">
+                    <option value="Light">Light</option>
+                    <option value="Dark">Dark</option>
+                </select>
             </div>
         </div>
         
@@ -162,3 +203,4 @@
 
     </body>
 </html>
+              

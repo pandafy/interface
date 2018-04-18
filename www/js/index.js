@@ -1,21 +1,25 @@
 /*The init function runs when the html page is completely loaded tweaking here should be done carefully and should be reprted.
 It is a request to everyone to start there work at the end of this document againt there corressponding comments
 Also suggest if you can make the code more efficient*/
-document.addEventListener('deviceready',init(),false);
+document.addEventListener('deviceready',loadProfile(),false);
 
 function init()
 {
-     $('#S1Name').attr("placeholder",localStorage.S1Name);
-    $(document).on('click','#test5',function(){
-    alert("reached click");    
-    ahoy();
-   });
+    alert('vgffg');
+    
 }
 
 function loadProfile()
 {
+    //$('#S1Name').val("anthony");
     alert('inside loadprofile');
-    alert($('#pName').val(localStorage.pName));
+    alert(localStorage.S1Name);
+    try {
+      $('#S1Name').val("anthony");
+    }
+    finally{
+        alert('this is not working');
+    }
 }
 
 
@@ -41,19 +45,29 @@ subject.Absent=function(){
     this.no_class++;
 }
 
-var S1=new subject('Physics',0,0,0);
+
     
     function ahoy(){
         alert(S1.name);
         alert("Hey");
     }   
 
-$(document).on('click','#SubSubmit',function(){
+
+
+//$(document).on('click',
+$('#SubSubmit').click(function(){
+    alert("S1Name.val() : "+ $('#S1Name').val());
     localStorage.S1Name=$("#S1Name").val();
     //check if it is stored
     alert(localStorage.S1Name);
-    $('#S1Name').attr("placeholder",localStorage.S1Name);
-})
+    $('#S1Name').atrt("placeholder",localStorage.S1Name);
+});
+
+//$(document).on('click','#place',function(){
+$('#place').click(function(){
+    alert("ghfjhg");
+    $('#S2Name').val($('#S1Name').val());
+});
 
 
 
@@ -66,6 +80,8 @@ function saveProfile()
     localStorage.pAge=$('#pAge').val();
     alert($('#pName').val(localStorage.pName));
 }
+
+
 
 //Analysis Team
 
