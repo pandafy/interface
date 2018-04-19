@@ -1,11 +1,38 @@
 /*The init function runs when the html page is completely loaded tweaking here should be done carefully and should be reprted.
 It is a request to everyone to start there work at the end of this document againt there corressponding comments
 Also suggest if you can make the code more efficient*/
-document.addEventListener('deviceready',loadProfile(),false);
+$('#S2Name').val('mohogany');
+alert($('#S2Name').val());
+$('#EditSubject').trigger('create');
+
+alert("this works?");
+
+document.addEventListener('deviceready',init(),false);
 
 function init()
 {
+    $('#S2Name').val('mohogany');
+alert($('#S2Name').val());
+$('#EditSubject').trigger('create');
+
+
     alert('vgffg');
+    $('#S2Name').val($('#S1Name').val());
+    alert("performed");
+    loadProfile();
+    $(document).on('click',"#SubSubmit",function(){
+        alert("inside submit");
+        alert("S1Name.val() : "+ $('#S1Name').val());
+        localStorage.S1Name=$("#S1Name").val();
+        //check if it is stored
+        alert(localStorage.S1Name);
+        $('#S1Name').attr("placeholder",localStorage.S1Name);
+    });
+    $(document).on('click','#place',function(){
+        alert("inside place holder");
+        $('#S2Name').val($('#S1Name').val());
+        alert($("#S2Name").val());
+    });
     
 }
 
@@ -17,8 +44,9 @@ function loadProfile()
     try {
       $('#S1Name').val("anthony");
     }
-    finally{
-        alert('this is not working');
+    catch(error)
+    {
+        alert(error);
     }
 }
 
@@ -54,20 +82,10 @@ subject.Absent=function(){
 
 
 
-//$(document).on('click',
-$('#SubSubmit').click(function(){
-    alert("S1Name.val() : "+ $('#S1Name').val());
-    localStorage.S1Name=$("#S1Name").val();
-    //check if it is stored
-    alert(localStorage.S1Name);
-    $('#S1Name').atrt("placeholder",localStorage.S1Name);
-});
+
 
 //$(document).on('click','#place',function(){
-$('#place').click(function(){
-    alert("ghfjhg");
-    $('#S2Name').val($('#S1Name').val());
-});
+
 
 
 
