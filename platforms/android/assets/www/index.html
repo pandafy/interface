@@ -46,7 +46,8 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div data-role="page" id="home">
+<!--The HOME page is common for all. Tweak it as per your requirement-->
+        <div data-role="page" id="home" data-theme="a">
             <div data-role=header data-position="fixed">
                 <h2>Attendance Register</h2>
                 <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
@@ -61,13 +62,16 @@
             </div>
 
             <div class="ui-content" role="main" inset="true">
-                <p align='center'><a href="#markAttend" class="ui-btn" item-width="100%">Mark today's attendance</a></p>
-                <p align='center'><a href="#analyzeAttend" class="ui-btn" item-width="100%">Analyze Attendance</a></p>
-                <p align='center'><a href="#home" class="ui-btn" item-width="100%">Something else</a></p>
+                <br><br><br>
+                <p >
+                    <a href="#monday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#edit"  data-inline="true" data-role="button">Edit</a>
+                </p>
             </div>
         </div>
-
-        <div data-role="page" id="markAttend">
+<!-- WORKING AREA FOR AAYUSH AND GAGAN-->
+        <div data-role="page" id="markAttend" data-theme="a">
             <div data-role="header" data-position="ficed">
                 <h1>Mark Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
@@ -77,6 +81,51 @@
             </div>
         </div>
         
+        <div data-role="page" id='monday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2>
+                <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Monday</h3>
+                <p>
+                    <table data-role="table" id="table-monday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td> <label for="Phy" >Physics</label></td>
+                                <td><input class='M1' type="radio" name='Phy' value=1></td>
+                                <td><input class='M1' type="radio" name='Phy' value=0></td>
+                                <td><input class='M1' type="radio" name='Phy' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td><input class='M2' type="radio" name='Mth' value=1></td>
+                                <td><input class='M2' type="radio" name='Mth' value="0"></td>
+                                <td><input class='M2' type="radio" name='Mth' value="-1"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Engineering Mechanics</td>
+                                <td><input class='M3' type="radio" name='EM' value=1></td>
+                                <td><input class='M3' type="radio" name='EM' value="0"></td>
+                                <td><input class='M3' type="radio" name='EM' value="-1"></td>
+                            </tr>
+                                <td>Introduction to Programming</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" id="MBtn">Submit</a>
+            </div>
+        </div>
+
+<!--WORKING AREA FOR ASHISH AND KUSHAGRA -->
         <div data-role="page" id="analyzeAttend">
             <div data-role="header" data-position="fixed">
                 <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
@@ -87,23 +136,55 @@
             </div>
         </div>
 
-        <div data-role="page" id="profile">
-            <div data-role="header" >
-                <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
-            </div>
-
-            <div role="main" class="ui-content">
-                <h2>Next Page</h2>
-            </div>
+<!--WORKING AREA FOR MOHIT AND GAGAN-->
+    <div data-role="page" id="edit">
+        <div data-role="header" >
+            <h1>Edit Utility</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
         </div>
-        
-        <div data-role="page" id="settings">
+
+        <div role="main" class="ui-content">
+            <a href="#EditSubject" data-role="button" id='EditSubjectBtn'>Edit Subjects</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="EditSubject">
+        <div data-role="header">
+            <h1>Edit Subjects</h1><a href="#edit" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
+        </div>
+        <div role="main" class="ui-content">
+            <label for="S1Name" class="ui-hidden-accessible">Text Input:</label>
+               <input id="S0Name" type="text" placeholder="Subject 1 Name" >
+            <input id="S1Name" type="text" placeholder="Subject 2 Name" >
+            <input id="S2Name" type="text" placeholder="Subject 3 Name" >
+            <input id="S3Name" type="text" placeholder="Subject 4 Name" >
+            <input id="S4Name" type="text" placeholder="Subject 5 Name" >
+            <a id="SubSubmit" data-role="button">Submit</a>
+            
+            
+        </div>
+    </div>
+
+
+<!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
+        <div data-role="page" id="profile">
             <div data-role="header">
-                <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
+            </div>
+
+            
+        </div>
+
+<!--WORKING AREA FOR VISHAL AND GAGAN-->
+        <div data-role="page" id="settings">
+            <div data-role="header"> <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
             <div role="main" class="ui-content">
-                <h2>Next Page</h2>
+                <label for="theme-flip" data-mini="true" onBlur="save()">Theme</label>
+                <select name="theme-flip" id="theme-flip" data-mini="true" data-role="slider">
+                    <option value="Light">Light</option>
+                    <option value="Dark">Dark</option>
+                </select>
             </div>
         </div>
         
@@ -111,3 +192,4 @@
 
     </body>
 </html>
+              
