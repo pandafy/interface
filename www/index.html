@@ -142,7 +142,7 @@
         </div>
 
         <div role="main" class="ui-content">
-            <a href="#EditSubject" data-role="button">Edit Subjects</a></button>
+            <a href="#EditSubject" data-role="button" id='EditSubjectBtn'>Edit Subjects</a>
         </div>
     </div>
 
@@ -151,38 +151,26 @@
             <h1>Edit Subjects</h1><a href="#edit" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
         </div>
         <div role="main" class="ui-content">
+            <label for="S1Name" class="ui-hidden-accessible">Text Input:</label>
+               <input id="S1Name" type="text" placeholder="Subject 1 Name" >
+            <input id="S2Name" type="text" placeholder="Subject 2 Name" >
+            <input id="S3Name" type="text" placeholder="Subject 3 Name" >
+            <input id="S4Name" type="text" placeholder="Subject 4 Name" >
+            <input id="S5Name" type="text" placeholder="Subject 5 Name" >
+            <a id="SubSubmit" data-role="button">Submit</a>
             
-            <input id="S1Name" type="text" placeholder="Subject 1 Name" value="S1Name">
-            <input id="S2Name" type="text" placeholder="Subject 2 Name" value="S2Name">
-            <input id="S3Name" type="text" placeholder="Subject 3 Name" value="S3Name">
-            <input id="S4Name" type="text" placeholder="Subject 4 Name" value="S4Name">
-            <input id="S5Name" type="text" placeholder="Subject 5 Name" value="S5Name">
-            <a id="SubSubmit" data-role="button">Submit
             
-            <a data-role="button" id="place">placeholder testing</a>
         </div>
     </div>
 
 
 <!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
         <div data-role="page" id="profile">
-            <div data-role="header" >
-                <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+            <div data-role="header">
+                <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
             </div>
 
-            <div role="main" class="ui-content">
-                
-                    <label for="pName" class="ui-hidden-accessible">Text Input:</label>
-                        <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
-                    <label for="pSum" class="ui-hidden-accessible" >Submit</label>
-                        <p><a id="yxy">asdsadad</a></p>
-                
-            <script>
-                $('#yxy').click(function() {
-                    alert("it is clicked");
-                })
-            </script>
-            </div>
+            
         </div>
 
 <!--WORKING AREA FOR VISHAL AND GAGAN-->
