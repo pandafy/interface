@@ -71,16 +71,17 @@ function subject(name, no_class,absent,present) {
     this.no_class=no_class;
     this.present=present;
     this.absent=absent;
-    }
+    
 
-subject.Present=function(){
-    this.present++;
-    this.no_class++;
+
 };
+function Present(S){
+    S.present++;
+    S.no_class++;
 
-subject.Absent=function(){
-    this.absent++;
-    this.no_class++;
+Absent=function(S){
+    S.absent++;
+    S.no_class++;
 };
 
 
@@ -236,40 +237,40 @@ alert(S[i].name);
             if($('.L1:checked').attr('name')==S[i].name){
                 if($('.L1:checked').val()==1){
     alert('going inside present()');
-                    S[i].Present();
+                    Present(S[i]);
                     alert('returned from Present()');}
                 else if($('.L1:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             }
             else if($('.L2:checked').attr('name')==S[i].name){
                 if($('.L2:checked').val()==1)
-                    S[i].Present();
+                    Present(S[i]);
                 else if($('.L2:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             }
             else if($('.L3:checked').attr('name')==S[i].name){
                 if($('.L3:checked').val()==1)
-                    S[i].Present();
+                    Present(S[i]);
                 else if($('.L3:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             }
             else if($('.L4:checked').attr('name')==S[i].name){
                 if($('.L4:checked').val()==1)
-                    S[i].Present();
+                    Present(S[i]);
                 else if($('.L4:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             }
             else if($('.L5:checked').attr('name')==S[i].name){
                 if($('.L5:checked').val()==1)
-                    S[i].Present();
+                    Present(S[i]);
                 else if($('.L5:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             }
             else if($('.L6:checked').attr('name')==S[i].name){
                 if($('.L6:checked').val()==1)
-                    S[i].Present();
+                    Present(S[i]);
                 else if($('.L6:checked').val()==0)
-                    S[i].Absent();
+                    Absent(S[i]);
             } 
             else
                 continue;
