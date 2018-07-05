@@ -40,7 +40,9 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="lib/jquery-mobile/js/jquery-2.2.4.min.js"></script>
         <script tyoe="text/javascript" src="lib\jquery-mobile\js\jquery.mobile-1.4.5.js"></script>
-	    <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+ <!--       //<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>-->
         
         
         <title>Hello World</title>
@@ -64,15 +66,15 @@
             <div class="ui-content" role="main" inset="true">
                 <br><br><br>
                 <p >
-                    <a href="#monday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#wednesday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
                     <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
-                    <a href="#edit"  data-inline="true" data-role="button">Edit</a>
+                    <a href="#edit" id="ediot" data-inline="true" data-role="button">Edit</a>
                 </p>
             </div>
         </div>
 <!-- WORKING AREA FOR AAYUSH AND GAGAN-->
         <div data-role="page" id="markAttend" data-theme="a">
-            <div data-role="header" data-position="ficed">
+            <div data-role="header" data-position="fixeded">
                 <h1>Mark Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
             </div>
 
@@ -83,8 +85,8 @@
         
         <div data-role="page" id='monday'  data-theme="a">
             <div data-role="header">
-                <h2>Mark Attendance</h2>
-                <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
             </div>
             <div class="ui-content" role="main" style='text-align:center'>
                 <h3>Monday</h3>
@@ -99,29 +101,239 @@
                             </tr>
                             <tr>
                                 <td> <label for="Phy" >Physics</label></td>
-                                <td><input class='M1' type="radio" name='Phy' value=1></td>
-                                <td><input class='M1' type="radio" name='Phy' value=0></td>
-                                <td><input class='M1' type="radio" name='Phy' value=-1></td>
+                                <td><input class='L1' type="radio" name='Physics' value=1></td>
+                                <td><input class='L1' type="radio" name='Physics' value=0></td>
+                                <td><input class='L1' type="radio" name='Phyics' value=-1></td>
                             </tr>
                             <tr>
                                 <td>Mathematics</td>
-                                <td><input class='M2' type="radio" name='Mth' value=1></td>
-                                <td><input class='M2' type="radio" name='Mth' value="0"></td>
-                                <td><input class='M2' type="radio" name='Mth' value="-1"></td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=1></td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=0></td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=-1></td>
                             </tr>
                             
                             <tr>
                                 <td>Engineering Mechanics</td>
-                                <td><input class='M3' type="radio" name='EM' value=1></td>
-                                <td><input class='M3' type="radio" name='EM' value="0"></td>
-                                <td><input class='M3' type="radio" name='EM' value="-1"></td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=-1></td>
                             </tr>
                                 <td>Introduction to Programming</td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=1></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=0></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=-1></td>
                             </tr>
                         </thead>
                     </table>
                 </p>
-                <a data-role="button" id="MBtn">Submit</a>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='tuesday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Tuesday</h3>
+                <p>
+                    <table data-role="table" id="table-tuesday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>Engineering Mechanics</label></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Introduction to Programming</td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=1></td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=0></td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=-1></td>
+                            </tr>
+                                <td>Communication Skills</td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=1></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=0></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=-1></td>
+                            </tr>
+                            </tr>
+                                <td>EVS</td>
+                                <td><input class='L5' type="radio" name='EVS' value=1></td>
+                                <td><input class='L5' type="radio" name='EVS' value=0></td>
+                                <td><input class='L5' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                            </tr>
+                                <td>Electronic Devices Lab</td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=1></td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=0></td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='wednesday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Wednesday</h3>
+                <p>
+                    <table data-role="table" id="table-wednesday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>Physics</label></td>
+                                <td><input class='L1' type="radio" name='Physics' value=1></td>
+                                <td><input class='L1' type="radio" name='Physics' value=0></td>
+                                <td><input class='L1' type="radio" name='Phyics' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Introduction to Programming Lab</td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=1></td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=0></td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=1></td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=0></td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='thursday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Thursday</h3>
+                <p>
+                    <table data-role="table" id="table-thursday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td> <label for="Phy" >Engineering Mechanics Lab</label></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=1></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=0></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>EVS Lab</td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=1></td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=0></td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=-1></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>EVS</td>
+                                <td><input class='L3' type="radio" name='EVS' value=1></td>
+                                <td><input class='L3' type="radio" name='EVS' value=0></td>
+                                <td><input class='L3' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                                <td>Communication Skills</td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=1></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=0></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='friday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Friday</h3>
+                <p>
+                    <table data-role="table" id="table-friday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>EVS</td>
+                                <td><input class='L1' type="radio" name='EVS' value=1></td>
+                                <td><input class='L1' type="radio" name='EVS' value=0></td>
+                                <td><input class='L1' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Physics</td>
+                                <td><input class='L2' type="radio" name='Physics' value=1></td>
+                                <td><input class='L2' type="radio" name='Physics' value=0></td>
+                                <td><input class='L2' type="radio" name='Phyics' value=-1></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                                <td>Introduction to Programming</td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=1></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=0></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Engineering Mechanics</td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
             </div>
         </div>
 
@@ -158,6 +370,13 @@
             <input id="S2Name" type="text" placeholder="Subject 3 Name" >
             <input id="S3Name" type="text" placeholder="Subject 4 Name" >
             <input id="S4Name" type="text" placeholder="Subject 5 Name" >
+            <input id="S5Name" type="text" placeholder="Subject 6 Name" >
+            <input id="S6Name" type="text" placeholder="Subject 7 Name" >
+            <input id="S7Name" type="text" placeholder="Subject 8 Name" >
+            <input id="S8Name" type="text" placeholder="Subject 9 Name" >
+            <input id="S9Name" type="text" placeholder="Subject 10 Name" >
+            <input id="S10Name" type="text" placeholder="Subject 11 Name" >
+            <input id="S11Name" type="text" placeholder="Subject 12 Name" >
             <a id="SubSubmit" data-role="button">Submit</a>
             
             

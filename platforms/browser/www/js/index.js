@@ -1,10 +1,11 @@
 /*The init function runs when the html page is completely loaded tweaking here should be done carefully and should be reprted.
 It is a request to everyone to start there work at the end of this document againt there corressponding comments
 Also suggest if you can make the code more efficient*/
-
+document.addEventListener('deviceready',init,false);
 
 function saveData()
 {
+    {/*
     localStorage.S0name     =S[0].name;
     localStorage.S0no_class =S[0].no_class;
     localStorage.S0absent   =S[0].absent;
@@ -63,7 +64,8 @@ function saveData()
     localStorage.S11name     =S[11].name;
     localStorage.S11no_class =S[11].no_class;
     localStorage.S11absent   =S[11].absent;
-    localStorage.S11present  =S[11].present;
+    localStorage.S11present  =S[11].present;*/
+    }
 }
 
 function subject(name, no_class,absent,present) {
@@ -71,14 +73,12 @@ function subject(name, no_class,absent,present) {
     this.no_class=no_class;
     this.present=present;
     this.absent=absent;
-    
-
-
 };
+
 function Present(S){
     S.present++;
     S.no_class++;
-
+}
 Absent=function(S){
     S.absent++;
     S.no_class++;
@@ -87,13 +87,13 @@ Absent=function(S){
 
 
 
-var S = new Array(12);
-for(var i=0;i<12;++i)
-    S[i]=new subject;
+
 
 function loaddata()
 {
     
+    {
+    /*
     S[0].name    =localStorage.S0name;
     S[0].no_class=localStorage.S0no_class;
     S[0].absent  =localStorage.S0absent;
@@ -152,22 +152,27 @@ function loaddata()
     S[11].name    =localStorage.S11name;
     S[11].no_class=localStorage.S11no_class;
     S[11].absent  =localStorage.S11absent;
-    S[11].present =localStorage.S11present;
+    S[11].present =localStorage.S11present;*/
+    }
 }
 
 
-document.addEventListener('deviceready',init(),false);
+
 
 function init()
 {
-    loaddata();
-    alert(S[3].no_class);
-    alert(S[3].present);
+    alert('inside init()');
     
-//EDIT TEAM
+    //Declaring variables for subject
+        var S = new Array(12);
+        for(var i=0;i<12;++i)
+            S[i]=new subject;
+    //Initialising placeholders 
+        init_placeholders();
+    //EDIT TEAM
 
 
-    $(document).on('click',"#SubSubmit",function(){
+    $('#SubSubmit').click(function(){
         //localStorage.S1Name=$("#S1Name").val();
         alert('inside submit');
     
@@ -200,7 +205,7 @@ function init()
     });
     
     
-    $(document).on('click','#EditSubjectBtn',function(){
+    function init_placeholders(){
         alert("inside place holder");
         $('#S0Name').val(S[0].name);
         $('#S1Name').val(S[1].name);
@@ -227,9 +232,9 @@ function init()
         $('#S9Name').attr("placeholder",S[9].name);
         $('#S10Name').attr("placeholder",S[10].name);
         $('#S11Name').attr("placeholder",S[11].name);
-    });
+    }
 
-// MARK ATTENDANCE
+    // MARK ATTENDANCE
 
     $(document).on('click','.MBtn',function(){
         for(var i=0;i<12;++i){    
@@ -296,27 +301,6 @@ function loadProfile()
 
 
 
-//Mark Attendance Team
-
-
-//Edit Team
-
-    
-    function ahoy(){
-        alert(S1.name);
-        alert("Hey");
-    }   
-
-
-
-
-
-//$(document).on('click','#place',function(){
-
-
-
-
-//Profile Team
 function saveProfile()
 {   
     alert('inside save profile');

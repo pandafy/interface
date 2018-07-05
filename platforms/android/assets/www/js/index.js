@@ -39,29 +39,56 @@ function saveData()
     localStorage.S6no_class =S[6].no_class;
     localStorage.S6absent   =S[6].absent;
     localStorage.S6present  =S[6].present; 
-}
 
-alert("point 1");
+    localStorage.S7name     =S[7].name;
+    localStorage.S7no_class =S[7].no_class;
+    localStorage.S7absent   =S[7].absent;
+    localStorage.S7present  =S[7].present;
+
+    localStorage.S8name     =S[8].name;
+    localStorage.S8no_class =S[8].no_class;
+    localStorage.S8absent   =S[8].absent;
+    localStorage.S8present  =S[8].present;
+
+    localStorage.S9name     =S[9].name;
+    localStorage.S9no_class =S[9].no_class;
+    localStorage.S9absent   =S[9].absent;
+    localStorage.S9present  =S[9].present;
+
+    localStorage.S10name     =S[10].name;
+    localStorage.S10no_class =S[10].no_class;
+    localStorage.S10absent   =S[10].absent;
+    localStorage.S10present  =S[10].present;
+    
+    localStorage.S11name     =S[11].name;
+    localStorage.S11no_class =S[11].no_class;
+    localStorage.S11absent   =S[11].absent;
+    localStorage.S11present  =S[11].present;
+}
 
 function subject(name, no_class,absent,present) {
     this.name = name;
     this.no_class=no_class;
     this.present=present;
     this.absent=absent;
-    }
+    
 
-subject.Present=function(){
-    this.present++;
-    this.no_class++;
-}
 
-subject.Absent=function(){
-    this.absent++;
-    this.no_class++;
-}
+};
+function Present(S){
+    S.present++;
+    S.no_class++;
 
-var S = new Array(10);
-for(var i=0;i<7;++i)
+Absent=function(S){
+    S.absent++;
+    S.no_class++;
+};
+
+
+
+
+var S = new Array(12);
+for(var i=0;i<12;++i)
     S[i]=new subject;
 
 function loaddata()
@@ -101,14 +128,43 @@ function loaddata()
     S[6].no_class=localStorage.S6no_class;
     S[6].absent  =localStorage.S6absent;
     S[6].present =localStorage.S6present;
+
+    S[7].name    =localStorage.S7name;
+    S[7].no_class=localStorage.S7no_class;
+    S[7].absent  =localStorage.S7absent;
+    S[7].present =localStorage.S7present;
+
+    S[8].name    =localStorage.S8name;
+    S[8].no_class=localStorage.S8no_class;
+    S[8].absent  =localStorage.S8absent;
+    S[8].present =localStorage.S8present;
+
+    S[9].name    =localStorage.S9name;
+    S[9].no_class=localStorage.S9no_class;
+    S[9].absent  =localStorage.S9absent;
+    S[9].present =localStorage.S9present;
+
+    S[10].name    =localStorage.S10name;
+    S[10].no_class=localStorage.S10no_class;
+    S[10].absent  =localStorage.S10absent;
+    S[10].present =localStorage.S10present;
+
+    S[11].name    =localStorage.S11name;
+    S[11].no_class=localStorage.S11no_class;
+    S[11].absent  =localStorage.S11absent;
+    S[11].present =localStorage.S11present;
 }
 
 
-document.addEventListener('deviceready',init(),false);
+document.addEventListener('deviceready',init,false);
 
 function init()
 {
+    alert('inside init()');
+    $('#ediot')
     loaddata();
+    alert(S[3].no_class);
+    alert(S[3].present);
     
 //EDIT TEAM
 
@@ -122,12 +178,26 @@ function init()
         S[2] = new subject($("#S2Name").val(),0,0,0);
         S[3] = new subject($("#S3Name").val(),0,0,0);
         S[4] = new subject($("#S4Name").val(),0,0,0);
-
+        S[5] = new subject($("#S5Name").val(),0,0,0);
+        S[6] = new subject($("#S6Name").val(),0,0,0);
+        S[7] = new subject($("#S7Name").val(),0,0,0);
+        S[8] = new subject($("#S8Name").val(),0,0,0);
+        S[9] = new subject($("#S9Name").val(),0,0,0);
+        S[10] = new subject($("#S10Name").val(),0,0,0);
+        S[11] = new subject($("#S11Name").val(),0,0,0);
+        
         $('#S0Name').attr("placeholder",S[0].name);
         $('#S1Name').attr("placeholder",S[1].name);
         $('#S2Name').attr("placeholder",S[2].name);
         $('#S3Name').attr("placeholder",S[3].name);
         $('#S4Name').attr("placeholder",S[4].name);
+        $('#S5Name').attr("placeholder",S[5].name);
+        $('#S6Name').attr("placeholder",S[6].name);
+        $('#S7Name').attr("placeholder",S[7].name);
+        $('#S8Name').attr("placeholder",S[8].name);
+        $('#S9Name').attr("placeholder",S[9].name);
+        $('#S10Name').attr("placeholder",S[10].name);
+        $('#S11Name').attr("placeholder",S[11].name);
         saveData();
     });
     
@@ -139,24 +209,76 @@ function init()
         $('#S2Name').val(S[2].name);
         $('#S3Name').val(S[3].name);
         $('#S4Name').val(S[4].name);
+        $('#S5Name').val(S[5].name);
+        $('#S6Name').val(S[6].name);
+        $('#S7Name').val(S[7].name);
+        $('#S8Name').val(S[8].name);
+        $('#S9Name').val(S[9].name);
+        $('#S10Name').val(S[10].name);
+        $('#S11Name').val(S[11].name);
 
         $('#S0Name').attr("placeholder",S[0].name);
         $('#S1Name').attr("placeholder",S[1].name);
         $('#S2Name').attr("placeholder",S[2].name);
         $('#S3Name').attr("placeholder",S[3].name);
         $('#S4Name').attr("placeholder",S[4].name);
-        
+        $('#S5Name').attr("placeholder",S[5].name);
+        $('#S6Name').attr("placeholder",S[6].name);
+        $('#S7Name').attr("placeholder",S[7].name);
+        $('#S8Name').attr("placeholder",S[8].name);
+        $('#S9Name').attr("placeholder",S[9].name);
+        $('#S10Name').attr("placeholder",S[10].name);
+        $('#S11Name').attr("placeholder",S[11].name);
     });
 
 // MARK ATTENDANCE
 
-    $(document).on('click','#MBtn',function(){
-        alert($("input[name='Phy']:checked").val());
-        alert($('.M1:checked').val());
-        alert($('.M1:checked').attr('name'));
-        alert($('.M2:checked').attr('name'));
-        alert($('.M3:checked').attr('name'));
-    })
+    $(document).on('click','.MBtn',function(){
+        for(var i=0;i<12;++i){    
+alert(S[i].name);
+            if($('.L1:checked').attr('name')==S[i].name){
+                if($('.L1:checked').val()==1){
+    alert('going inside present()');
+                    Present(S[i]);
+                    alert('returned from Present()');}
+                else if($('.L1:checked').val()==0)
+                    Absent(S[i]);
+            }
+            else if($('.L2:checked').attr('name')==S[i].name){
+                if($('.L2:checked').val()==1)
+                    Present(S[i]);
+                else if($('.L2:checked').val()==0)
+                    Absent(S[i]);
+            }
+            else if($('.L3:checked').attr('name')==S[i].name){
+                if($('.L3:checked').val()==1)
+                    Present(S[i]);
+                else if($('.L3:checked').val()==0)
+                    Absent(S[i]);
+            }
+            else if($('.L4:checked').attr('name')==S[i].name){
+                if($('.L4:checked').val()==1)
+                    Present(S[i]);
+                else if($('.L4:checked').val()==0)
+                    Absent(S[i]);
+            }
+            else if($('.L5:checked').attr('name')==S[i].name){
+                if($('.L5:checked').val()==1)
+                    Present(S[i]);
+                else if($('.L5:checked').val()==0)
+                    Absent(S[i]);
+            }
+            else if($('.L6:checked').attr('name')==S[i].name){
+                if($('.L6:checked').val()==1)
+                    Present(S[i]);
+                else if($('.L6:checked').val()==0)
+                    Absent(S[i]);
+            } 
+            else
+                continue;
+        }
+        saveData();
+    });
     
 }
 
