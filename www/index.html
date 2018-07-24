@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+            
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="lib\jquery-mobile\css\jquery.mobile-1.4.5.css">
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile/js/jquery-2.2.4.min.js"></script>
+        <script tyoe="text/javascript" src="lib\jquery-mobile\js\jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+        
+        
+        <title>Hello World</title>
+    </head>
+    <body>
+<!--The HOME page is common for all. Tweak it as per your requirement-->
+        <div data-role="page" id="home" data-theme="a">
+            <div data-role=header data-position="fixed">
+                <h2>Attendance Register</h2>
+                <a href="#right-panel" data-theme="a"  data-icon="bars-black" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
+            </div>
+
+            <div data-role="panel"  id="right-panel" data-theme="b" data-display="push" data-position="left" inset="true">
+                <a href="#" data-role="button" data-mini='true'  data-icon="delete" data-iconpos="left" data-rel="close">close</a>
+                <a href="#profile" data-role="button" data-mini='true'  class="ui-icon-user" data-icon="user" data-iconpos="left" data-transition="pop">Profile</a>
+                <a href="#settings" data-role="button" data-mini='true' data-icon="gear" data-iconpos="left" data-transition="slideup">Setings</a>
+                <a href="#share" data-role="button" data-mini='true' data-icon="share" data-iconpos="left" data-rel="close">Share</a>
+                <a href="#about" data-role="button" data-mini='true' class="ui-icon-info"  data-icon="info" data-iconpos="left" data-rel="close">About</a>
+            </div>
+
+            <div class="ui-content" role="main" inset="true">
+                <br><br><br>
+                <p >
+                    <a href="#wednesday"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+                    <a href="#analyzeAttend"  data-inline="true" data-role="button">Analyze<br>Attendance</a>
+<<<<<<< HEAD
+                    <a href="#edit"  data-inline="true" data-role="button">Edit</a>
+                    <a data-role="button" id="createFile" data-inline="true"> Create File</a>
+
+=======
+                    <a href="#edit" id="ediot" data-inline="true" data-role="button">Edit</a>
+>>>>>>> 63b0ceabfe7585c7996be9d9b935578c65dd5a00
+                </p>
+            </div>
+        </div>
+<!-- WORKING AREA FOR AAYUSH AND GAGAN-->
+        <div data-role="page" id="markAttend" data-theme="a">
+            <div data-role="header" data-position="fixeded">
+                <h1>Mark Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+            </div>
+
+            <div role="main" class="ui-content">
+                <h2>Next Page</h2>
+            </div>
+        </div>
+        
+        <div data-role="page" id='monday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Monday</h3>
+                <p>
+                    <table data-role="table" id="table-monday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td> <label for="Phy" >Physics</label></td>
+                                <td><input class='L1' type="radio" name='Physics' value=1></td>
+                                <td><input class='L1' type="radio" name='Physics' value=0></td>
+                                <td><input class='L1' type="radio" name='Phyics' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=1></td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=0></td>
+                                <td><input class='L2' type="radio" name='Mathematics' value=-1></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Engineering Mechanics</td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L3' type="radio" name='Engineering Mechanics' value=-1></td>
+                            </tr>
+                                <td>Introduction to Programming</td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=1></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=0></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='tuesday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Tuesday</h3>
+                <p>
+                    <table data-role="table" id="table-tuesday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>Engineering Mechanics</label></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Introduction to Programming</td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=1></td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=0></td>
+                                <td><input class='L3' type="radio" name='Introduction to Programming' value=-1></td>
+                            </tr>
+                                <td>Communication Skills</td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=1></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=0></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=-1></td>
+                            </tr>
+                            </tr>
+                                <td>EVS</td>
+                                <td><input class='L5' type="radio" name='EVS' value=1></td>
+                                <td><input class='L5' type="radio" name='EVS' value=0></td>
+                                <td><input class='L5' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                            </tr>
+                                <td>Electronic Devices Lab</td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=1></td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=0></td>
+                                <td><input class='L6' type="radio" name='Electronic Devices Lab' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='wednesday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Wednesday</h3>
+                <p>
+                    <table data-role="table" id="table-wednesday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>Physics</label></td>
+                                <td><input class='L1' type="radio" name='Physics' value=1></td>
+                                <td><input class='L1' type="radio" name='Physics' value=0></td>
+                                <td><input class='L1' type="radio" name='Phyics' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L2' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Introduction to Programming Lab</td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=1></td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=0></td>
+                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=1></td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=0></td>
+                                <td><input class='L3' type="radio" name='Mathematics' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='thursday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Thursday</h3>
+                <p>
+                    <table data-role="table" id="table-thursday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td> <label for="Phy" >Engineering Mechanics Lab</label></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=1></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=0></td>
+                                <td><input class='L1' type="radio" name='Engineering Mechanics Lab' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>EVS Lab</td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=1></td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=0></td>
+                                <td><input class='L2' type="radio" name='EVS Lab' value=-1></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>EVS</td>
+                                <td><input class='L3' type="radio" name='EVS' value=1></td>
+                                <td><input class='L3' type="radio" name='EVS' value=0></td>
+                                <td><input class='L3' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                                <td>Communication Skills</td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=1></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=0></td>
+                                <td><input class='L4' type="radio" name='Communication Skills' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+        <div data-role="page" id='friday'  data-theme="a">
+            <div data-role="header">
+                <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                
+            </div>
+            <div class="ui-content" role="main" style='text-align:center'>
+                <h3>Friday</h3>
+                <p>
+                    <table data-role="table" id="table-friday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                        <thead >
+                            <tr class="ui-bar-a">
+                                <th >Subject</th>
+                                <th width="10%">Present</th>
+                                <th width="10%">Absent</th>
+                                <th width="10%">NL</th>
+                            </tr>
+                            <tr>
+                                <td>EVS</td>
+                                <td><input class='L1' type="radio" name='EVS' value=1></td>
+                                <td><input class='L1' type="radio" name='EVS' value=0></td>
+                                <td><input class='L1' type="radio" name='EVS' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Physics</td>
+                                <td><input class='L2' type="radio" name='Physics' value=1></td>
+                                <td><input class='L2' type="radio" name='Physics' value=0></td>
+                                <td><input class='L2' type="radio" name='Phyics' value=-1></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>Electronic Devices</td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L3' type="radio" name='Electronic Devices' value=-1></td>
+                            </tr>
+                                <td>Introduction to Programming</td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=1></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=0></td>
+                                <td><input class='L4' type="radio" name='Information to Technology' value=-1></td>
+                            </tr>
+                            <tr>
+                                <td>Engineering Mechanics</td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=1></td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=0></td>
+                                <td><input class='L2' type="radio" name='Engineering Mechanics' value=-1></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </p>
+                <a data-role="button" class="MBtn">Submit</a>
+            </div>
+        </div>
+
+<!--WORKING AREA FOR ASHISH AND KUSHAGRA -->
+        <div data-role="page" id="analyzeAttend">
+            <div data-role="header" data-position="fixed">
+                <h1>Analyze Attendance</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+            </div>
+
+            <div role="main" class="ui-content">
+                <h2>Next Page</h2>
+            </div>
+        </div>
+
+<!--WORKING AREA FOR MOHIT AND GAGAN-->
+    <div data-role="page" id="edit">
+        <div data-role="header" >
+            <h1>Edit Utility</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+        </div>
+
+        <div role="main" class="ui-content">
+            <a href="#EditSubject" data-role="button" id='EditSubjectBtn'>Edit Subjects</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="EditSubject">
+        <div data-role="header">
+            <h1>Edit Subjects</h1><a href="#edit" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
+        </div>
+        <div role="main" class="ui-content">
+            <label for="S1Name" class="ui-hidden-accessible">Text Input:</label>
+               <input id="S0Name" type="text" placeholder="Subject 1 Name" >
+            <input id="S1Name" type="text" placeholder="Subject 2 Name" >
+            <input id="S2Name" type="text" placeholder="Subject 3 Name" >
+            <input id="S3Name" type="text" placeholder="Subject 4 Name" >
+            <input id="S4Name" type="text" placeholder="Subject 5 Name" >
+            <input id="S5Name" type="text" placeholder="Subject 6 Name" >
+            <input id="S6Name" type="text" placeholder="Subject 7 Name" >
+            <input id="S7Name" type="text" placeholder="Subject 8 Name" >
+            <input id="S8Name" type="text" placeholder="Subject 9 Name" >
+            <input id="S9Name" type="text" placeholder="Subject 10 Name" >
+            <input id="S10Name" type="text" placeholder="Subject 11 Name" >
+            <input id="S11Name" type="text" placeholder="Subject 12 Name" >
+            <a id="SubSubmit" data-role="button">Submit</a>
+            
+            
+        </div>
+    </div>
+
+
+<!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
+        <div data-role="page" id="profile">
+            <div data-role="header">
+                <h1>Profile</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-1" class="ui-btn-left">Home</a>
+            </div>
+
+<<<<<<< HEAD
+            <div role="main" class="ui-content">
+                
+                    <label for="pName" class="ui-hidden-accessible">Text Input:</label>
+                        <input type="text" name="textinput-hide" id="pName" placeholder="Text input" value="Name">
+                    <label for="pSum" class="ui-hidden-accessible" >Submit</label>
+                        <p><a id="yxy">asdsadad</a></p>
+                
+            
+            </div>
+=======
+            
+>>>>>>> 63b0ceabfe7585c7996be9d9b935578c65dd5a00
+        </div>
+
+<!--WORKING AREA FOR VISHAL AND GAGAN-->
+        <div data-role="page" id="settings">
+            <div data-role="header"> <h1>Setings</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+            </div>
+
+            <div role="main" class="ui-content">
+                <label for="theme-flip" data-mini="true" onBlur="save()">Theme</label>
+                <select name="theme-flip" id="theme-flip" data-mini="true" data-role="slider">
+                    <option value="Light">Light</option>
+                    <option value="Dark">Dark</option>
+                </select>
+            </div>
+        </div>
+        
+      
+
+    </body>
+</html>
+              

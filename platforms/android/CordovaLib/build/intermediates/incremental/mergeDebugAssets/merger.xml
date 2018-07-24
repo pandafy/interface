@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<merger version="3"><dataSet config="main"><source path="C:\Users\SHALU\Desktop\file1\platforms\android\CordovaLib\assets"/><source path="C:\Users\SHALU\Desktop\file1\platforms\android\CordovaLib\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\SHALU\Desktop\file1\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="C:\Users\SHALU\Desktop\app\platforms\android\CordovaLib\assets"/><source path="C:\Users\SHALU\Desktop\app\platforms\android\CordovaLib\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\SHALU\Desktop\app\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>
+>>>>>>> 63b0ceabfe7585c7996be9d9b935578c65dd5a00
