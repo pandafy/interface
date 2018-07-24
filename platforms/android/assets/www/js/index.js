@@ -2,9 +2,13 @@
 It is a request to everyone to start there work at the end of this document againt there corressponding comments
 Also suggest if you can make the code more efficient*/
 
+var S = new Array(12);
+
+document.addEventListener('deviceready',init,false);
 
 function saveData()
 {
+    {/*
     localStorage.S0name     =S[0].name;
     localStorage.S0no_class =S[0].no_class;
     localStorage.S0absent   =S[0].absent;
@@ -63,7 +67,8 @@ function saveData()
     localStorage.S11name     =S[11].name;
     localStorage.S11no_class =S[11].no_class;
     localStorage.S11absent   =S[11].absent;
-    localStorage.S11present  =S[11].present;
+    localStorage.S11present  =S[11].present;*/
+    }
 }
 
 function subject(name, no_class,absent,present) {
@@ -71,14 +76,12 @@ function subject(name, no_class,absent,present) {
     this.no_class=no_class;
     this.present=present;
     this.absent=absent;
-    
-
-
 };
+
 function Present(S){
     S.present++;
     S.no_class++;
-
+}
 Absent=function(S){
     S.absent++;
     S.no_class++;
@@ -87,13 +90,13 @@ Absent=function(S){
 
 
 
-var S = new Array(12);
-for(var i=0;i<12;++i)
-    S[i]=new subject;
+
 
 function loaddata()
 {
     
+    {
+    /*
     S[0].name    =localStorage.S0name;
     S[0].no_class=localStorage.S0no_class;
     S[0].absent  =localStorage.S0absent;
@@ -152,24 +155,28 @@ function loaddata()
     S[11].name    =localStorage.S11name;
     S[11].no_class=localStorage.S11no_class;
     S[11].absent  =localStorage.S11absent;
-    S[11].present =localStorage.S11present;
+    S[11].present =localStorage.S11present;*/
+    }
 }
 
-
-document.addEventListener('deviceready',init,false);
-
+    var dirEntry ;
 function init()
 {
-    alert('inside init()');
-    $('#ediot')
-    loaddata();
-    alert(S[3].no_class);
-    alert(S[3].present);
+    console.log('inside init()');
+    var dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
+
+    //Declaring variables for subject
+        for(var i=0;i<12;++i)
+            S[i]=new subject();
+    //Initialising placeholders 
+       init_placeholders();
     
-//EDIT TEAM
+    //Initialize files
+    checkIfExists('SubInfo.txt',dirEntry);
 
 
-    $(document).on('click',"#SubSubmit",function(){
+
+    $('#SubSubmit').click(function(){
         //localStorage.S1Name=$("#S1Name").val();
         alert('inside submit');
     
@@ -202,40 +209,13 @@ function init()
     });
     
     
-    $(document).on('click','#EditSubjectBtn',function(){
-        alert("inside place holder");
-        $('#S0Name').val(S[0].name);
-        $('#S1Name').val(S[1].name);
-        $('#S2Name').val(S[2].name);
-        $('#S3Name').val(S[3].name);
-        $('#S4Name').val(S[4].name);
-        $('#S5Name').val(S[5].name);
-        $('#S6Name').val(S[6].name);
-        $('#S7Name').val(S[7].name);
-        $('#S8Name').val(S[8].name);
-        $('#S9Name').val(S[9].name);
-        $('#S10Name').val(S[10].name);
-        $('#S11Name').val(S[11].name);
+    
 
-        $('#S0Name').attr("placeholder",S[0].name);
-        $('#S1Name').attr("placeholder",S[1].name);
-        $('#S2Name').attr("placeholder",S[2].name);
-        $('#S3Name').attr("placeholder",S[3].name);
-        $('#S4Name').attr("placeholder",S[4].name);
-        $('#S5Name').attr("placeholder",S[5].name);
-        $('#S6Name').attr("placeholder",S[6].name);
-        $('#S7Name').attr("placeholder",S[7].name);
-        $('#S8Name').attr("placeholder",S[8].name);
-        $('#S9Name').attr("placeholder",S[9].name);
-        $('#S10Name').attr("placeholder",S[10].name);
-        $('#S11Name').attr("placeholder",S[11].name);
-    });
-
-// MARK ATTENDANCE
+    // MARK ATTENDANCE
 
     $(document).on('click','.MBtn',function(){
         for(var i=0;i<12;++i){    
-alert(S[i].name);
+    alert(S[i].name);
             if($('.L1:checked').attr('name')==S[i].name){
                 if($('.L1:checked').val()==1){
     alert('going inside present()');
@@ -282,6 +262,40 @@ alert(S[i].name);
     
 }
 
+
+
+    //Placeholders
+    function init_placeholders(){
+        console.log("inside place holder");
+        S[0].name='Gagan';
+        $('#S0Name').val(S[0].name);
+        $('#S1Name').val(S[1].name);
+        $('#S2Name').val(S[2].name);
+        $('#S3Name').val(S[3].name);
+        $('#S4Name').val(S[4].name);
+        $('#S5Name').val(S[5].name);
+        $('#S6Name').val(S[6].name);
+        $('#S7Name').val(S[7].name);
+        $('#S8Name').val(S[8].name);
+        $('#S9Name').val(S[9].name);
+        $('#S10Name').val(S[10].name);
+        $('#S11Name').val(S[11].name);
+
+        $('#S0Name').attr("placeholder",S[0].name);
+        $('#S1Name').attr("placeholder",S[1].name);
+        $('#S2Name').attr("placeholder",S[2].name);
+        $('#S3Name').attr("placeholder",S[3].name);
+        $('#S4Name').attr("placeholder",S[4].name);
+        $('#S5Name').attr("placeholder",S[5].name);
+        $('#S6Name').attr("placeholder",S[6].name);
+        $('#S7Name').attr("placeholder",S[7].name);
+        $('#S8Name').attr("placeholder",S[8].name);
+        $('#S9Name').attr("placeholder",S[9].name);
+        $('#S10Name').attr("placeholder",S[10].name);
+        $('#S11Name').attr("placeholder",S[11].name);
+    }
+
+
 function loadProfile()
 {
     //$('#S1Name').val("anthony");
@@ -298,27 +312,6 @@ function loadProfile()
 
 
 
-//Mark Attendance Team
-
-
-//Edit Team
-
-    
-    function ahoy(){
-        alert(S1.name);
-        alert("Hey");
-    }   
-
-
-
-
-
-//$(document).on('click','#place',function(){
-
-
-
-
-//Profile Team
 function saveProfile()
 {   
     alert('inside save profile');
@@ -341,3 +334,66 @@ $(document).on('change','#theme-flip',function() {
     else
         alert("light theme");
 });
+
+
+//FILE FUNCTIONS DEFINITIONS
+
+function createDirEntry(dir){
+    console.log('file system open: ' + dir.name);
+    console.log('dir : '+dir);
+    dir.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
+        console.log('File checkIfExistError : '+error.code);
+        createFile(dirEntry, filename,true);
+    });
+    return dir;
+    //dirEntry.getFile
+}
+
+function checkIfExists(fileName,dirEntry){
+   // window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry), onErrorResolveURL);
+    dirEntry.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
+        console.log('File checkIfExistError : '+error.code);
+        createFile(dirEntry, filename,true);
+    });
+}
+
+function readFile(fileEntry) {
+
+    fileEntry.file(function (file) {
+
+        reader.onload = function() {
+            //console.log("Successful file read: " + this.result);
+            console.log('Read file : '+this.result);
+            temp = this.result.replace('[','');
+            temp = temp.replace(']','');
+            array= temp.split('},');
+            for(i=0;array[i]!=null;++i){
+              if(!array[i].includes('null'))
+              console.log(JSON.parse(array[i]+'}'));
+              
+            console.log('ReaderState.onprogress : '+reader.readyState);
+            }
+        };
+        reader.onerror = function(){
+            console.log('reader error occured : '+reader.error);
+        };
+
+        reader.readAsText(file);
+        console.log('ReaderState : '+reader.readyState);
+    }, onErrorReadFile);
+}
+
+function createFile(dirEntry, fileName, isAppend) {
+    // Creates a new file or returns the file if it already exists.
+    dirEntry.getFile(fileName, {create: true, exclusive: false}, function(fileEntry) {
+
+        writeFile(fileEntry, S, isAppend);
+
+    }, onErrorCreateFile);
+
+}
+
+    function onErrorResolveURL(error)
+    {
+        console.log('unable to resolve url'+error.code);
+    }
