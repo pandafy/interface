@@ -160,19 +160,26 @@ function loaddata()
 }
 
     var dirEntry ;
+    var reader = new FileReader();
+    //var fileName
 function init()
 {
     console.log('inside init()');
-    var dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
+     //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
 
     //Declaring variables for subject
         for(var i=0;i<12;++i)
-            S[i]=new subject();
-    //Initialising placeholders 
-       init_placeholders();
+            S[i]=new subject(undefined,undefined,undefined,undefined);
+     
+       
     
     //Initialize files
-    checkIfExists('SubInfo.txt',dirEntry);
+    //S[1]=new subject('Chemistry',4,5);
+    checkIfExists('Sub.txt',false);
+
+
+    //Initialising placeholders
+    init_placeholders();
 
 
 
@@ -205,7 +212,9 @@ function init()
         $('#S9Name').attr("placeholder",S[9].name);
         $('#S10Name').attr("placeholder",S[10].name);
         $('#S11Name').attr("placeholder",S[11].name);
-        saveData();
+        
+        //temporary
+        checkIfExists('Sub.txt',true);
     });
     
     
@@ -267,7 +276,6 @@ function init()
     //Placeholders
     function init_placeholders(){
         console.log("inside place holder");
-        S[0].name='Gagan';
         $('#S0Name').val(S[0].name);
         $('#S1Name').val(S[1].name);
         $('#S2Name').val(S[2].name);
@@ -338,23 +346,33 @@ $(document).on('change','#theme-flip',function() {
 
 //FILE FUNCTIONS DEFINITIONS
 
-function createDirEntry(dir){
+/*function createDirEntry(dir){
     console.log('file system open: ' + dir.name);
     console.log('dir : '+dir);
     dir.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
-        console.log('File checkIfExistError : '+error.code);
-        createFile(dirEntry, filename,true);
+        console.log('File checkIfExistError : ');
+        createFile(dirEntry, fileName,true);
     });
     return dir;
     //dirEntry.getFile
-}
+}*/
 
-function checkIfExists(fileName,dirEntry){
-   // window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry), onErrorResolveURL);
-    dirEntry.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
+function checkIfExists(fileName,rw){
+    window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry){
+    dirEntry.getFile(fileName,{create:false, exclusive:false}, function(fileEntry)
+        {
+            if(rw==true){
+                console.log('initiating write sequence');
+                writeFile(fileEntry,S,false);
+            }
+            else
+                console.log('initiating read sequence');
+                readFile(fileEntry);
+        }, function (error){
         console.log('File checkIfExistError : '+error.code);
-        createFile(dirEntry, filename,true);
+        createFile(dirEntry, fileName,true);
     });
+    }, onErrorResolveURL);
 }
 
 function readFile(fileEntry) {
@@ -369,17 +387,27 @@ function readFile(fileEntry) {
             array= temp.split('},');
             for(i=0;array[i]!=null;++i){
               if(!array[i].includes('null'))
-              console.log(JSON.parse(array[i]+'}'));
-              
+              {
+                    if(array[i][array[i].length-1]!='}')
+                        array[i]=array[i]+'}';
+                    console.log(JSON.parse(array[i]));
+                    S[i]=JSON.parse(array[i]);
+              }
             console.log('ReaderState.onprogress : '+reader.readyState);
             }
         };
+
+        reader.onloadend = function() {
+            init_placeholders();
+        }
+
         reader.onerror = function(){
             console.log('reader error occured : '+reader.error);
         };
 
         reader.readAsText(file);
         console.log('ReaderState : '+reader.readyState);
+        init_placeholders();
     }, onErrorReadFile);
 }
 
@@ -393,7 +421,47 @@ function createFile(dirEntry, fileName, isAppend) {
 
 }
 
+function writeFile(fileEntry, dataObj, isAppend) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function (fileWriter) {
+
+        fileWriter.onwriteend = function() {
+            console.log("Successful file read...");
+            readFile(fileEntry);
+        };
+
+
+        fileWriter.onerror = function (e) {
+            console.log("Failed file read: " + e.toString());
+        };
+
+        // If we are appending data to file, go to the end of the file.
+        if (isAppend) {
+            try {
+                fileWriter.seek(fileWriter.length);
+            }
+            catch (e) {
+                console.log("file doesn't exist!");
+            }
+        }
+        fileWriter.write(dataObj);
+    });
+}
+
+
     function onErrorResolveURL(error)
     {
         console.log('unable to resolve url'+error.code);
     }
+
+    function onErrorCreateFile(error)
+    {
+        console.log('unable to create file '+error.code);
+    }
+
+    function onErrorReadFile(error)
+    {
+        console.log('unable to create file '+error.code);
+    }
+
+
