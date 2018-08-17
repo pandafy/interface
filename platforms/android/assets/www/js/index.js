@@ -173,8 +173,8 @@ function init()
      
        
     
-    //Initialize files
-    //S[1]=new subject('Chemistry',4,5);
+//Initialize files
+
     checkIfExists('Sub.txt',false);
 
 
@@ -217,6 +217,12 @@ function init()
         checkIfExists('Sub.txt',true);
     });
     
+    $('#TimetableSubmit').click(function(){
+        console.log('inside updateTimeTable');
+        console.log($('#W0').val());
+        $('.L1.Wed').attr("name",$('#W0').val());
+        $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+    });
     
     
 
@@ -224,10 +230,10 @@ function init()
 
     $(document).on('click','.MBtn',function(){
         for(var i=0;i<12;++i){    
-    alert(S[i].name);
+        alert(S[i].name);
             if($('.L1:checked').attr('name')==S[i].name){
                 if($('.L1:checked').val()==1){
-    alert('going inside present()');
+                    alert('going inside present()');
                     Present(S[i]);
                     alert('returned from Present()');}
                 else if($('.L1:checked').val()==0)
@@ -314,7 +320,7 @@ function loadProfile()
     }
     catch(error)
     {
-        alert(error);
+        console.log('load oriofile error' + error.code);
     }
 }
 
@@ -329,7 +335,14 @@ function saveProfile()
     alert($('#pName').val(localStorage.pName));
 }
 
+//Edit Functions
 
+function updateTimeTable(){
+    console.log('inside updateTimeTable');
+    console.log($('#M0').val())
+     $('.L1 .Wed').attr("name",$('#M0').val());
+
+}
 
 //Analysis Team
 

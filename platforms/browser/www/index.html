@@ -99,7 +99,7 @@
                                 <th width="10%">NL</th>
                             </tr>
                             <tr>
-                                <td> <label for="Phy" >Physics</label></td>
+                                </td>
                                 <td><input class='L1' type="radio" name='Physics' value=1></td>
                                 <td><input class='L1' type="radio" name='Physics' value=0></td>
                                 <td><input class='L1' type="radio" name='Phyics' value=-1></td>
@@ -191,6 +191,7 @@
         <div data-role="page" id='wednesday'  data-theme="a">
             <div data-role="header">
                 <h2>Mark Attendance</h2><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Home</a>
+                <a href="#editTimetable" data-treansition="slide" class="ui-btn-right"  data-inline="true" data-iconpos="notext" data-icon="edit"></a>
                 
             </div>
             <div class="ui-content" role="main" style='text-align:center'>
@@ -202,13 +203,13 @@
                                 <th >Subject</th>
                                 <th width="10%">Present</th>
                                 <th width="10%">Absent</th>
-                                <th width="10%">NL</th>
+                                <th width="10%"><span>NL</span></th>
                             </tr>
                             <tr>
-                                <td>Physics</label></td>
-                                <td><input class='L1' type="radio" name='Physics' value=1></td>
-                                <td><input class='L1' type="radio" name='Physics' value=0></td>
-                                <td><input class='L1' type="radio" name='Phyics' value=-1></td>
+                                <td>Physics</td>
+                                <td><span><input class='L1 Wed' type="radio" name='Physics' value=1></span></td>
+                                <td><span><input class='L1 Wed' type="radio" name='Physics' value=0></span></td>
+                                <td><span><input class='L1 Wed' type="radio" name='Phyics' value=-1></span></td>
                             </tr>
                             <tr>
                                 <td>Electronic Devices</td>
@@ -290,7 +291,7 @@
             <div class="ui-content" role="main" style='text-align:center'>
                 <h3>Friday</h3>
                 <p>
-                    <table data-role="table" id="table-friday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                    <table data-role="table" id="table-friday" class="ui-body-a ui-shadow ">
                         <thead >
                             <tr class="ui-bar-a">
                                 <th >Subject</th>
@@ -382,6 +383,50 @@
         </div>
     </div>
 
+    <div data-role="page" id="editTimetable">
+        <div data-role="header">
+            <h1>Timetable Editor</h1><a href="#wednesday" data-transition="slide" data-direction="reverse" data-icon='arrow-l' class="ui-btn-left" data-iconpos='notext' data-mini="false"></a>
+            <a id='TimetableSubmit' href="#wednesday" data-transition = 'pop' data-icon='check' class="ui-icon-check" data-iconpos='notext'></a>
+        </div>
+
+        <div role='main' class="ui-content">
+            
+             <div data-role="collapsible-set">
+
+                <div data-role="collapsible" data-collapsed="true">
+                <h3>Monday</h3>
+                    <input id="M0" type="text" placeholder="Lecture 1" >
+                    <input id="M1" type="text" placeholder="Lecture 2 " >
+                    <input id="M2" type="text" placeholder="Lecture 3 " >
+                </div>
+                
+                <div data-role="collapsible">
+                <h3>Tuesday</h3>
+                <p>I'm the collapsible set content for section 2.</p>
+                </div>
+
+                <div data-role="collapsible">
+                <h3>Wednesday</h3>
+                    <input id="W0" type="text" placeholder="Lecture 1" >
+                    <input id="W1" type="text" placeholder="Lecture 2 " >
+                    <input id="W2" type="text" placeholder="Lecture 3 " >
+                </div>
+
+                <div data-role="collapsible">
+                <h3>Thursday</h3>
+                <p>I'm the collapsible set content for section 2.</p>
+                </div>
+
+                <div data-role="collapsible">
+                <h3>Friday</h3>
+                <p>I'm the collapsible set content for section 2.</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
 
 <!-- WORKING AREA FOR VIDUSHI AND PRIYA. -->
         <div data-role="page" id="profile">

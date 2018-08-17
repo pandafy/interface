@@ -173,8 +173,8 @@ function init()
      
        
     
-    //Initialize files
-    //S[1]=new subject('Chemistry',4,5);
+//Initialize files
+
     checkIfExists('Sub.txt',false);
 
 
@@ -183,40 +183,26 @@ function init()
 
 
 
-    $('#SubSubmit').click(function(){
+    $('#SubSubmit').on('click',function(){
         //localStorage.S1Name=$("#S1Name").val();
         alert('inside submit');
-    
-        S[0] = new subject($("#S0Name").val(),0,0,0);
-        S[1] = new subject($("#S1Name").val(),0,0,0);
-        S[2] = new subject($("#S2Name").val(),0,0,0);
-        S[3] = new subject($("#S3Name").val(),0,0,0);
-        S[4] = new subject($("#S4Name").val(),0,0,0);
-        S[5] = new subject($("#S5Name").val(),0,0,0);
-        S[6] = new subject($("#S6Name").val(),0,0,0);
-        S[7] = new subject($("#S7Name").val(),0,0,0);
-        S[8] = new subject($("#S8Name").val(),0,0,0);
-        S[9] = new subject($("#S9Name").val(),0,0,0);
-        S[10] = new subject($("#S10Name").val(),0,0,0);
-        S[11] = new subject($("#S11Name").val(),0,0,0);
-        
-        $('#S0Name').attr("placeholder",S[0].name);
-        $('#S1Name').attr("placeholder",S[1].name);
-        $('#S2Name').attr("placeholder",S[2].name);
-        $('#S3Name').attr("placeholder",S[3].name);
-        $('#S4Name').attr("placeholder",S[4].name);
-        $('#S5Name').attr("placeholder",S[5].name);
-        $('#S6Name').attr("placeholder",S[6].name);
-        $('#S7Name').attr("placeholder",S[7].name);
-        $('#S8Name').attr("placeholder",S[8].name);
-        $('#S9Name').attr("placeholder",S[9].name);
-        $('#S10Name').attr("placeholder",S[10].name);
-        $('#S11Name').attr("placeholder",S[11].name);
-        
+        for(var k=0;k<12;++k)
+        {
+            [k] = new subject($("#S"+k+"Name").val(),0,0,0);
+            $('#S'+k+'Name').attr("placeholder",S[k].name);
+           
+        }
         //temporary
         checkIfExists('Sub.txt',true);
     });
     
+    $('#TimetableSubmit').click(function(){
+        console.log('inside updateTimeTable');
+        
+        console.log($('#W0').val());
+        $('.L1.Wed').attr("name",$('#W0').val());
+        $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+    });
     
     
 
@@ -224,10 +210,10 @@ function init()
 
     $(document).on('click','.MBtn',function(){
         for(var i=0;i<12;++i){    
-    alert(S[i].name);
+        alert(S[i].name);
             if($('.L1:checked').attr('name')==S[i].name){
                 if($('.L1:checked').val()==1){
-    alert('going inside present()');
+                    alert('going inside present()');
                     Present(S[i]);
                     alert('returned from Present()');}
                 else if($('.L1:checked').val()==0)
@@ -314,7 +300,7 @@ function loadProfile()
     }
     catch(error)
     {
-        alert(error);
+        console.log('load oriofile error' + error.code);
     }
 }
 
@@ -329,7 +315,15 @@ function saveProfile()
     alert($('#pName').val(localStorage.pName));
 }
 
+//Edit Functions
 
+function updateTimeTable(){
+    console.log('inside updateTimeTable');
+    console.log($('#M0').val())
+     $('.L1 .Wed').attr("name",$('#M0').val());
+     $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+
+}
 
 //Analysis Team
 

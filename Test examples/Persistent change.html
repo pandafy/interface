@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+First Name: <input type="text" id="myText" value="Mickey">
+
+<p id="da">Click the button to display the value of the value attribute of the text field.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function render1 (html){
+	var template = document.createElement('template');
+	template.innerHTML = html;
+	return template.content;
+}
+
+
+function myFunction() {
+    var x = document.getElementById("myText").value;
+    document.getElementById("demo").innerHTML = x;
+    document.getElementById("demo").classList.add('mystyle');
+    document.getElementById("da").append(render1('<h1>Works</h1>'));
+}
+
+
+</script>
+
+<style type="text/css">
+	.mystyle {
+		content: "This Got changed";
+}
+</style>
+</body>
+</html>

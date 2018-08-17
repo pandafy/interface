@@ -159,56 +159,72 @@ function loaddata()
     }
 }
 
- //dirEntry =
-  window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, createDirEntry, onErrorResolveURL);
-
+    var dirEntry ;
+    var reader = new FileReader();
+    //var fileName
 function init()
 {
     console.log('inside init()');
-    
+     //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
+
     //Declaring variables for subject
         for(var i=0;i<12;++i)
-            S[i]=new subject();
-    //Initialising placeholders 
-       init_placeholders();
+            S[i]=new subject(undefined,undefined,undefined,undefined);
+     
+       
     
-    //Initialize files
-    checkIfExists('SubInfo.txt');
+//Initialize files
+
+//    checkIfExists('Sub.txt',false);
+
+
+    //Initialising placeholders
+    init_placeholders();
 
 
 
-    $('#SubSubmit').click(function(){
+    $('#SubSubmit').on('click',function(){
         //localStorage.S1Name=$("#S1Name").val();
         alert('inside submit');
-    
-        S[0] = new subject($("#S0Name").val(),0,0,0);
-        S[1] = new subject($("#S1Name").val(),0,0,0);
-        S[2] = new subject($("#S2Name").val(),0,0,0);
-        S[3] = new subject($("#S3Name").val(),0,0,0);
-        S[4] = new subject($("#S4Name").val(),0,0,0);
-        S[5] = new subject($("#S5Name").val(),0,0,0);
-        S[6] = new subject($("#S6Name").val(),0,0,0);
-        S[7] = new subject($("#S7Name").val(),0,0,0);
-        S[8] = new subject($("#S8Name").val(),0,0,0);
-        S[9] = new subject($("#S9Name").val(),0,0,0);
-        S[10] = new subject($("#S10Name").val(),0,0,0);
-        S[11] = new subject($("#S11Name").val(),0,0,0);
-        
-        $('#S0Name').attr("placeholder",S[0].name);
-        $('#S1Name').attr("placeholder",S[1].name);
-        $('#S2Name').attr("placeholder",S[2].name);
-        $('#S3Name').attr("placeholder",S[3].name);
-        $('#S4Name').attr("placeholder",S[4].name);
-        $('#S5Name').attr("placeholder",S[5].name);
-        $('#S6Name').attr("placeholder",S[6].name);
-        $('#S7Name').attr("placeholder",S[7].name);
-        $('#S8Name').attr("placeholder",S[8].name);
-        $('#S9Name').attr("placeholder",S[9].name);
-        $('#S10Name').attr("placeholder",S[10].name);
-        $('#S11Name').attr("placeholder",S[11].name);
-        saveData();
+        for(var k=0;k<12;++k)
+        {
+            S[k] = new subject($("#S"+k+"Name").val(),0,0,0);
+            /*S[1] = new subject($("#S1Name").val(),0,0,0);
+            S[2] = new subject($("#S2Name").val(),0,0,0);
+            S[3] = new subject($("#S3Name").val(),0,0,0);
+            S[4] = new subject($("#S4Name").val(),0,0,0);
+            S[5] = new subject($("#S5Name").val(),0,0,0);
+            S[6] = new subject($("#S6Name").val(),0,0,0);
+            S[7] = new subject($("#S7Name").val(),0,0,0);
+            S[8] = new subject($("#S8Name").val(),0,0,0);
+            S[9] = new subject($("#S9Name").val(),0,0,0);
+            S[10] = new subject($("#S10Name").val(),0,0,0);
+            S[11] = new subject($("#S11Name").val(),0,0,0);*/
+            
+            $('#S'+k+'Name').attr("placeholder",S[k].name);
+            /*$('#S1Name').attr("placeholder",S[1].name);
+            $('#S2Name').attr("placeholder",S[2].name);
+            $('#S3Name').attr("placeholder",S[3].name);
+            $('#S4Name').attr("placeholder",S[4].name);
+            $('#S5Name').attr("placeholder",S[5].name);
+            $('#S6Name').attr("placeholder",S[6].name);
+            $('#S7Name').attr("placeholder",S[7].name);
+            $('#S8Name').attr("placeholder",S[8].name);
+            $('#S9Name').attr("placeholder",S[9].name);
+            $('#S10Name').attr("placeholder",S[10].name);
+            $('#S11Name').attr("placeholder",S[11].name);*/
+        }
+        //temporary
+        checkIfExists('Sub.txt',true);
     });
     
+    $('#TimetableSubmit').click(function(){
+        console.log('inside updateTimeTable');
+        
+        console.log($('#W0').val());
+        $('.L1.Wed').attr("name",$('#W0').val());
+        $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+    });
     
     
 
@@ -216,10 +232,10 @@ function init()
 
     $(document).on('click','.MBtn',function(){
         for(var i=0;i<12;++i){    
-    alert(S[i].name);
+        alert(S[i].name);
             if($('.L1:checked').attr('name')==S[i].name){
                 if($('.L1:checked').val()==1){
-    alert('going inside present()');
+                    alert('going inside present()');
                     Present(S[i]);
                     alert('returned from Present()');}
                 else if($('.L1:checked').val()==0)
@@ -268,7 +284,6 @@ function init()
     //Placeholders
     function init_placeholders(){
         console.log("inside place holder");
-        S[0].name='Gagan';
         $('#S0Name').val(S[0].name);
         $('#S1Name').val(S[1].name);
         $('#S2Name').val(S[2].name);
@@ -307,7 +322,7 @@ function loadProfile()
     }
     catch(error)
     {
-        alert(error);
+        console.log('load oriofile error' + error.code);
     }
 }
 
@@ -322,7 +337,15 @@ function saveProfile()
     alert($('#pName').val(localStorage.pName));
 }
 
+//Edit Functions
 
+function updateTimeTable(){
+    console.log('inside updateTimeTable');
+    console.log($('#M0').val())
+     $('.L1 .Wed').attr("name",$('#M0').val());
+     $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+
+}
 
 //Analysis Team
 
@@ -339,17 +362,33 @@ $(document).on('change','#theme-flip',function() {
 
 //FILE FUNCTIONS DEFINITIONS
 
-function createDirEntry(dirEntry){
-    console.log('file system open: ' + dirEntry.name);
-    return dirEntry;
-    //dirEntry.getFile
-}
-
-function checkIfExists(fileName){
-    dirEntry.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
-        console.log('File checkIfExistError : '+error.code);
-        createFile(dirEntry, filename,true);
+/*function createDirEntry(dir){
+    console.log('file system open: ' + dir.name);
+    console.log('dir : '+dir);
+    dir.getFile(fileName,{create:false, exclusive:false}, readFile, function (fileName){
+        console.log('File checkIfExistError : ');
+        createFile(dirEntry, fileName,true);
     });
+    return dir;
+    //dirEntry.getFile
+}*/
+
+function checkIfExists(fileName,rw){
+    window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry){
+    dirEntry.getFile(fileName,{create:false, exclusive:false}, function(fileEntry)
+        {
+            if(rw==true){
+                console.log('initiating write sequence');
+                writeFile(fileEntry,S,false);
+            }
+            else
+                console.log('initiating read sequence');
+                readFile(fileEntry);
+        }, function (error){
+        console.log('File checkIfExistError : '+error.code);
+        createFile(dirEntry, fileName,true);
+    });
+    }, onErrorResolveURL);
 }
 
 function readFile(fileEntry) {
@@ -364,17 +403,27 @@ function readFile(fileEntry) {
             array= temp.split('},');
             for(i=0;array[i]!=null;++i){
               if(!array[i].includes('null'))
-              console.log(JSON.parse(array[i]+'}'));
-              
+              {
+                    if(array[i][array[i].length-1]!='}')
+                        array[i]=array[i]+'}';
+                    console.log(JSON.parse(array[i]));
+                    S[i]=JSON.parse(array[i]);
+              }
             console.log('ReaderState.onprogress : '+reader.readyState);
             }
         };
+
+        reader.onloadend = function() {
+            init_placeholders();
+        }
+
         reader.onerror = function(){
             console.log('reader error occured : '+reader.error);
         };
 
         reader.readAsText(file);
         console.log('ReaderState : '+reader.readyState);
+        init_placeholders();
     }, onErrorReadFile);
 }
 
@@ -388,7 +437,47 @@ function createFile(dirEntry, fileName, isAppend) {
 
 }
 
+function writeFile(fileEntry, dataObj, isAppend) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function (fileWriter) {
+
+        fileWriter.onwriteend = function() {
+            console.log("Successful file read...");
+            readFile(fileEntry);
+        };
+
+
+        fileWriter.onerror = function (e) {
+            console.log("Failed file read: " + e.toString());
+        };
+
+        // If we are appending data to file, go to the end of the file.
+        if (isAppend) {
+            try {
+                fileWriter.seek(fileWriter.length);
+            }
+            catch (e) {
+                console.log("file doesn't exist!");
+            }
+        }
+        fileWriter.write(dataObj);
+    });
+}
+
+
     function onErrorResolveURL(error)
     {
         console.log('unable to resolve url'+error.code);
     }
+
+    function onErrorCreateFile(error)
+    {
+        console.log('unable to create file '+error.code);
+    }
+
+    function onErrorReadFile(error)
+    {
+        console.log('unable to create file '+error.code);
+    }
+
+
