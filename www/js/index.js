@@ -168,8 +168,7 @@ function init()
     console.log('inside init()');
      //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
 
-      $('button.add-field').click(addField);
-    $(document).on('click','.remove',r3move)
+
     //Declaring variables for subject
         for(var i=0;i<12;++i)
             S[i]=new subject(undefined,undefined,undefined,undefined);
@@ -178,7 +177,7 @@ function init()
     
 //Initialize files
 
-    checkIfExists('Sub.txt',false);
+    //checkIfExists('Sub.txt',false,S);
 
 
     //Initialising placeholders
@@ -191,7 +190,7 @@ function init()
         alert('inside submit');
         for(var k=0;k<12;++k)
         {
-            [k] = new subject($("#S"+k+"Name").val(),0,0,0);
+            S[k] = new subject($("#S"+k+"Name").val(),0,0,0);
             $('#S'+k+'Name').attr("placeholder",S[k].name);
            
         }
@@ -199,13 +198,7 @@ function init()
         checkIfExists('Sub.txt',true);
     });
     
-    $('#TimetableSubmit').click(function(){
-        console.log('inside updateTimeTable');
-        
-        console.log($('#W0').val());
-        $('.L1.Wed').attr("name",$('#W0').val());
-        $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
-    });
+    $('#TimetableSubmit').click(updateTimeTable);
     
     
 
@@ -327,18 +320,24 @@ function saveProfile()
 
 //Edit Functions
 
-function updateTimeTable(meta){
-    console.log('inside updateTimeTable');
-    var days = new Array(6);
-    days[6]=meta;
-    var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
-    for(var i=0;i<5;++i){
-        days[i]=$(""+dayslist[i]+".TT-input").map(function() {
-                    return $(this).val();
-                 }).get();
+function updateTimeTable(meta,rw){
+    if(rw==true){
+        console.log('inside updateTimeTable');
+        var days = new Array(6);
+        //days[5]=meta;
+        var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
+        for(var i=0;i<5;++i){
+            days[i]=$(""+dayslist[i]+".TT-input").map(function() {
+                        return $(this).val();
+                     }).get();
+        }
+    checkIfExists('lectures.txt',true,days)    
+    }
+    else{
+        var days=meta;
     }
 
-
+ 
     //injecting data in tables
     for(var i=0;i<5;++i){
         for(var j=0;j<days[i].length;++j){
@@ -383,10 +382,10 @@ function updateTimeTable(meta){
 
         } 
      }  
-     days[6]=new Array(5);
+     days[5]=new Array(5);
      for(var i=0;i<5;++i)
-        days[6][i]=days[i].length;
-    return days[6];
+        days[5][i]=days[i].length;
+    
 }
 
 function addField(){
@@ -448,13 +447,13 @@ $(document).on('change','#theme-flip',function() {
     //dirEntry.getFile
 }*/
 
-function checkIfExists(fileName,rw){
+function checkIfExists(fileName,rw,obj){
     window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry){
     dirEntry.getFile(fileName,{create:false, exclusive:false}, function(fileEntry)
         {
             if(rw==true){
                 console.log('initiating write sequence');
-                writeFile(fileEntry,S,false);
+                writeFile(fileEntry,obj,false);
             }
             else
                 console.log('initiating read sequence');
@@ -462,6 +461,7 @@ function checkIfExists(fileName,rw){
         }, function (error){
         console.log('File checkIfExistError : '+error.code);
         createFile(dirEntry, fileName,true);
+        checkIfExists(fileName,rw,obj);
     });
     }, onErrorResolveURL);
 }
@@ -473,23 +473,29 @@ function readFile(fileEntry) {
         reader.onload = function() {
             //console.log("Successful file read: " + this.result);
             console.log('Read file : '+this.result);
-            temp = this.result.replace('[','');
-            temp = temp.replace(']','');
-            array= temp.split('},');
-            for(i=0;array[i]!=null;++i){
-              if(!array[i].includes('null'))
-              {
-                    if(array[i][array[i].length-1]!='}')
-                        array[i]=array[i]+'}';
-                    console.log(JSON.parse(array[i]));
-                    S[i]=JSON.parse(array[i]);
-              }
+            temp=this.result;
+            if(fileEntry.name!="lectures.txt"){
+                temp = this.result.replace('[','');
+                temp = temp.replace(']','');
+                array= temp.split('},');
+                for(i=0;array[i]!=null;++i){
+                  if(!array[i].includes('null'))
+                  {
+                        if(array[i][array[i].length-1]!='}')
+                            array[i]=array[i]+'}';
+                        console.log(JSON.parse(array[i]));
+                        S[i]=JSON.parse(array[i]);
+                  }
+            } 
             console.log('ReaderState.onprogress : '+reader.readyState);
             }
         };
 
         reader.onloadend = function() {
-            init_placeholders();
+            if(fileEntry.name=='lectures.txt')
+                updateTimeTable(this.result,false);
+            else
+                init_placeholders();
         }
 
         reader.onerror = function(){

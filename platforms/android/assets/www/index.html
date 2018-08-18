@@ -34,7 +34,7 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css\index.css">
         <link rel="stylesheet" type="text/css" href="lib\jquery-mobile\css\jquery.mobile-1.4.5.css">
         
         <script type="text/javascript" src="cordova.js"></script>
@@ -197,7 +197,7 @@
             <div class="ui-content" role="main" style='text-align:center'>
                 <h3>Wednesday</h3>
                 <p>
-                    <table data-role="table" id="table-wednesday" class="ui-body-a ui-shadow table-stripe ui-responsive">
+                    <table data-role="table" id="table-wednesday" class="ui-body-a ui-shadow table-stripe ui-responsive Wed">
                         <thead >
                             <tr class="ui-bar-a">
                                 <th >Subject</th>
@@ -205,31 +205,27 @@
                                 <th width="10%">Absent</th>
                                 <th width="10%"><span>NL</span></th>
                             </tr>
+                        </thead>
                             <tr>
                                 <td>Physics</td>
-                                <td><span><input class='L1 Wed' type="radio" name='Physics' value=1></span></td>
-                                <td><span><input class='L1 Wed' type="radio" name='Physics' value=0></span></td>
-                                <td><span><input class='L1 Wed' type="radio" name='Phyics' value=-1></span></td>
+                                <td><input class='L1 Wed' type="radio" name='Physics' value=1></td>
+                                <td><input class='L1 Wed' type="radio" name='Physics' value=0></td>
+                                <td><input class='L1 Wed' type="radio" name='Phyics' value=-1></td>
                             </tr>
                             <tr>
                                 <td>Electronic Devices</td>
-                                <td><input class='L2' type="radio" name='Electronic Devices' value=1></td>
-                                <td><input class='L2' type="radio" name='Electronic Devices' value=0></td>
-                                <td><input class='L2' type="radio" name='Electronic Devices' value=-1></td>
+                                <td><input class='L2 Wed' type="radio" name='Electronic Devices' value=1></td>
+                                <td><input class='L2 Wed' type="radio" name='Electronic Devices' value=0></td>
+                                <td><input class='L2 Wed' type="radio" name='Electronic Devices' value=-1></td>
                             </tr>
                             <tr>
                                 <td>Introduction to Programming Lab</td>
-                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=1></td>
-                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=0></td>
-                                <td><input class='L3' type="radio" name='Information to Technology Lab' value=-1></td>
+                                <td><input class='L3 Wed' type="radio" name='Information to Technology Lab' value=1></td>
+                                <td><input class='L3 Wed' type="radio" name='Information to Technology Lab' value=0></td>
+                                <td><input class='L3 Wed' type="radio" name='Information to Technology Lab' value=-1></td>
                             </tr>
-                            <tr>
-                                <td>Mathematics</td>
-                                <td><input class='L3' type="radio" name='Mathematics' value=1></td>
-                                <td><input class='L3' type="radio" name='Mathematics' value=0></td>
-                                <td><input class='L3' type="radio" name='Mathematics' value=-1></td>
-                            </tr>
-                        </thead>
+                             
+                        
                     </table>
                 </p>
                 <a data-role="button" class="MBtn">Submit</a>
@@ -395,31 +391,94 @@
 
                 <div data-role="collapsible" data-collapsed="true">
                 <h3>Monday</h3>
-                    <input id="M0" type="text" placeholder="Lecture 1" >
-                    <input id="M1" type="text" placeholder="Lecture 2 " >
-                    <input id="M2" type="text" placeholder="Lecture 3 " >
+                
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Mon TT-input" type="text" placeholder="Lecture 1" ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove"></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Mon TT-input" type="text" placeholder="Lecture 2 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Mon TT-input" type="text" placeholder="Lecture 3 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <button class="ui-btn ui-shadow ui-corner-all Mon add-field ui-btn-inline" >Add field</button>
+                    
+
                 </div>
                 
                 <div data-role="collapsible">
                 <h3>Tuesday</h3>
-                <p>I'm the collapsible set content for section 2.</p>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input  class="Tue TT-input" type="text" placeholder="Lecture 1" ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove"></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input  class="Tue TT-input" type="text" placeholder="Lecture 2 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Tue TT-input" type="text" placeholder="Lecture 3 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <button class="ui-btn ui-shadow ui-corner-all Tue add-field ui-btn-inline" >Add field</button>
+                    
                 </div>
 
                 <div data-role="collapsible">
                 <h3>Wednesday</h3>
-                    <input id="W0" type="text" placeholder="Lecture 1" >
-                    <input id="W1" type="text" placeholder="Lecture 2 " >
-                    <input id="W2" type="text" placeholder="Lecture 3 " >
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input  type="text" class="Wed TT-input"  placeholder="Lecture 1" ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove "></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input  type="text" class="Wed TT-input" placeholder="Lecture 2 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input  type="text" class="Wed TT-input" placeholder="Lecture 3 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <button class="ui-btn ui-shadow ui-corner-all Wed add-field ui-btn-inline" >Add field</button>
+                    
                 </div>
 
                 <div data-role="collapsible">
                 <h3>Thursday</h3>
-                <p>I'm the collapsible set content for section 2.</p>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Thur TT-input" type="text" placeholder="Lecture 1" ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove"></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Thur TT-input" type="text" placeholder="Lecture 2 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Thur TT-input" type="text" placeholder="Lecture 3 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <button class="ui-btn ui-shadow ui-corner-all Thur add-field ui-btn-inline" >Add field</button>
+                    
                 </div>
 
                 <div data-role="collapsible">
                 <h3>Friday</h3>
-                <p>I'm the collapsible set content for section 2.</p>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Fri TT-input" type="text" placeholder="Lecture 1" ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove"></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Fri TT-input" type="text" placeholder="Lecture 2 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input class="Fri TT-input" type="text" placeholder="Lecture 3 " ></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div>
+                    </div>
+                    <button class="ui-btn ui-shadow ui-corner-all Fri add-field ui-btn-inline" >Add field</button>
+                    
                 </div>
                 
             </div>
