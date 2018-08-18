@@ -255,7 +255,14 @@ function init()
         saveData();
     });
     
+//Edit Time Table
+
+    $('button.add-field').click(addField);
+    $(document).on('click','.remove',r3move)
+
 }
+
+
 
 
 
@@ -319,11 +326,83 @@ function saveProfile()
 
 function updateTimeTable(){
     console.log('inside updateTimeTable');
+    var days = new Array(5);
+    var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
+    for(var i=0;i<5;++i){
+        days[i]=$(""+dayslist[i]+".TT-input").map(function() {
+                    return $(this).val();
+                 }).get();
+    }
+
+
+    //injecting data in tables
+    for(var i=0;i<5;++i){
+        for(var j=0;j<days[i].length;++j){
+            //if(days[i].length<3)
+
+            console.log('i : '+i+ ' j : '+j + days[i][j])
+            if(j<3){
+                console.log(days[i][j])
+                $('.L'+(j+1)+dayslist[i]+'').attr("name",days[i][j]);
+                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html(days[i][j]);
+
+            }
+            else{
+                $('table'+dayslist[i]).append('<tr>\
+                                <td><b class="ui-table-cell-label">Subject</b>'+days[i][j]+'</td>\
+                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="1"></div></td>\
+                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="0"></div></td>\
+                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="-1"></div></td>\
+                            </tr>')
+            }
+
+        }
+        /*                    '<tr>\
+                                <td><b class="ui-table-cell-label">Subject</b>Mathematics</td>\
+                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="1"></div></td>\
+                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="0"></div></td>\
+                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="-1"></div></td>\
+                            </tr>'
+    }
     console.log($('#M0').val())
      $('.L1 .Wed').attr("name",$('#M0').val());
      $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
-
+*/
+ }
 }
+
+function addField(){
+    var inject;
+    if($(this).hasClass('Mon')){
+        inject='Mon'
+        console.log('Monday')
+    }
+        
+    else if($(this).hasClass('Tue')) {
+        inject="Tue"
+        console.log('Tuesday')
+    }
+    else if($(this).hasClass('Wed')){
+        console.log('Wednesday')
+        inject='Wed'
+    }
+
+    else if($(this).hasClass('Thur')){
+        console.log('Thursday')
+        inject='Thur'
+    }
+
+    else if($(this).hasClass('Fri')){
+        console.log('Friday')
+        inject='Fri'
+    }
+
+    $(this).before('<div class="ui-grid-a"><div class="ui-block-a ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input class="TT-input '+inject+'" type="text" placeholder="Lecture 3 " ></div><div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div></div>')
+}
+
+ function r3move(){
+    $(this).parent().parent().remove();
+ }
 
 //Analysis Team
 
