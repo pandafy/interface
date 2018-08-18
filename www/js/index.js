@@ -161,12 +161,15 @@ function loaddata()
 
     var dirEntry ;
     var reader = new FileReader();
+    var meta = [3,3,3,3,3]
     //var fileName
 function init()
 {
     console.log('inside init()');
      //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
 
+      $('button.add-field').click(addField);
+    $(document).on('click','.remove',r3move)
     //Declaring variables for subject
         for(var i=0;i<12;++i)
             S[i]=new subject(undefined,undefined,undefined,undefined);
@@ -324,9 +327,10 @@ function saveProfile()
 
 //Edit Functions
 
-function updateTimeTable(){
+function updateTimeTable(meta){
     console.log('inside updateTimeTable');
-    var days = new Array(5);
+    var days = new Array(6);
+    days[6]=meta;
     var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
     for(var i=0;i<5;++i){
         days[i]=$(""+dayslist[i]+".TT-input").map(function() {
@@ -340,8 +344,10 @@ function updateTimeTable(){
         for(var j=0;j<days[i].length;++j){
             //if(days[i].length<3)
 
-            console.log('i : '+i+ ' j : '+j + days[i][j])
-            if(j<3){
+            //console.log('i : '+i+ ' j : '+j + days[i][j])
+
+
+            if(j<3||(meta!==0&&j<meta[i])){
                 console.log(days[i][j])
                 $('.L'+(j+1)+dayslist[i]+'').attr("name",days[i][j]);
                 $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html(days[i][j]);
@@ -368,7 +374,19 @@ function updateTimeTable(){
      $('.L1 .Wed').attr("name",$('#M0').val());
      $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
 */
- }
+    
+    if(meta!==0){}
+        if(meta[i]>days[i].length){
+           for(var j=days[i].length;j<meta[i];++j){
+            $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().remove();
+           }
+
+        } 
+     }  
+     days[6]=new Array(5);
+     for(var i=0;i<5;++i)
+        days[6][i]=days[i].length;
+    return days[6];
 }
 
 function addField(){
