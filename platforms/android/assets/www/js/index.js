@@ -161,12 +161,12 @@ function loaddata()
 
     var dirEntry ;
     var reader = new FileReader();
-    var meta = [3,3,3,3,3]
+    var meta = [3,3,3,3,3,[3,3,3,3,3]]
     //var fileName
 function init()
 {
     console.log('inside init()');
-     //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
+     
 
 
     //Declaring variables for subject
@@ -178,10 +178,11 @@ function init()
 //Initialize files
 
     //checkIfExists('Sub.txt',false,S);
+    checkIfExists('lectures.txt',false)
 
 
     //Initialising placeholders
-    init_placeholders();
+    //init_placeholders();
 
 
 
@@ -198,7 +199,7 @@ function init()
         checkIfExists('Sub.txt',true);
     });
     
-    $('#TimetableSubmit').click(updateTimeTable);
+   // $('#TimetableSubmit').click(updateTimeTable(meta,true));
     
     
 
@@ -319,23 +320,30 @@ function saveProfile()
 }
 
 //Edit Functions
+var days = new Array(6);
+var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
 
 function updateTimeTable(meta,rw){
+    
+    
+    
+    //Code tp get input from HTML
     if(rw==true){
         console.log('inside updateTimeTable');
-        var days = new Array(6);
-        //days[5]=meta;
-        var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
+        
+                
         for(var i=0;i<5;++i){
             days[i]=$(""+dayslist[i]+".TT-input").map(function() {
                         return $(this).val();
                      }).get();
         }
-    checkIfExists('lectures.txt',true,days)    
+        console.log('got value of log '+days);
+        days[5]=meta[5];
+        
     }
-    else{
-        var days=meta;
-    }
+    else
+        days=meta;       
+
 
  
     //injecting data in tables
@@ -343,49 +351,74 @@ function updateTimeTable(meta,rw){
         for(var j=0;j<days[i].length;++j){
             //if(days[i].length<3)
 
-            //console.log('i : '+i+ ' j : '+j + days[i][j])
+            console.log('i : '+i+ ' j : '+j+ "Value : " + days[i][j] + " Length : "+ days[i].length );
 
 
-            if(j<3||(meta!==0&&j<meta[i])){
-                console.log(days[i][j])
+            if(j<days[5][i]){
+                console.log("j<[5]["+i+"] value : "+days[i][j]);
                 $('.L'+(j+1)+dayslist[i]+'').attr("name",days[i][j]);
-                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html(days[i][j]);
+                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html('<b class="ui-table-cell-label">Subject</b>'+days[i][j]);
+
+            }
+            else{
+
+                console.log('add field is disabled');
+            }
+
+        }
+
+        if(days[5][i]>days[i].length){
+            console.log("Need to delete some fields, iteration : "+i);
+            for(var j=days[i].length;j<days[5][i];++j){
+            $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().remove();
+           }
+
+        
+     }  
+
+        for(var i=0;i<5;++i)
+            days[5][i]=days[i].length;
+        if(rw==true)
+            checkIfExists('lectures.txt',true,days)
+}
+}
+
+function injectTimetable(){
+    for(var i=0;i<5;++i){
+        for(var j=0;j<days[i].length;++j){
+          
+
+            console.log('i : '+i+ ' j : '+j+ "Value : " + days[i][j] + " Length : "+ days[i].length );
+
+
+            if(j<days[5][i]){
+                console.log("j<[5]["+i+"] value : "+days[i][j]);
+                $('.L'+(j+1)+dayslist[i]+'').attr("name",days[i][j]);
+                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html('<b class="ui-table-cell-label">Subject</b>'+days[i][j]);
 
             }
             else{
                 $('table'+dayslist[i]).append('<tr>\
                                 <td><b class="ui-table-cell-label">Subject</b>'+days[i][j]+'</td>\
-                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="1"></div></td>\
-                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="0"></div></td>\
-                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="-1"></div></td>\
-                            </tr>')
+                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L'+(j+1)+' '+dayslist[i].replace('.','')+'" type="radio" name="'+days[i][j]+'" value="1"></div></td>\
+                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L'+(j+1)+' '+dayslist[i].replace('.','')+'" type="radio" name="'+days[i][j]+'" value="0"></div></td>\
+                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L'+(j+1)+' '+dayslist[i].replace('.','')+'" type="radio" name="'+days[i][j]+'" value="-1"></div></td>\
+                            </tr>');
+                console.log('add field is disabled');
+                console.log("Why it is working now/")
             }
 
-        }
-        /*                    '<tr>\
-                                <td><b class="ui-table-cell-label">Subject</b>Mathematics</td>\
-                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="1"></div></td>\
-                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="0"></div></td>\
-                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L3" type="radio" name="Mathematics" value="-1"></div></td>\
-                            </tr>'
-    }
-    console.log($('#M0').val())
-     $('.L1 .Wed').attr("name",$('#M0').val());
-     $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
-*/
-    
-    if(meta!==0){}
-        if(meta[i]>days[i].length){
-           for(var j=days[i].length;j<meta[i];++j){
-            $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().remove();
+        }//end of j loop
+        if(days[5][i]>days[i].length){
+            console.log("Need to delete some fields, iteration : "+i);
+            for(var j=days[i].length;j<=days[5][i];++j){
+                console.log("Deleting : "+ $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().html());
+                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().remove();
            }
-
-        } 
-     }  
-     days[5]=new Array(5);
-     for(var i=0;i<5;++i)
-        days[5][i]=days[i].length;
-    
+       }
+       days[5][i]=days[i].length; //updates meta of each array
+       console.log("days[5][i]=days[i].length : "+ days[i].length );
+    }//end of i loops
 }
 
 function addField(){
@@ -452,16 +485,16 @@ function checkIfExists(fileName,rw,obj){
     dirEntry.getFile(fileName,{create:false, exclusive:false}, function(fileEntry)
         {
             if(rw==true){
-                console.log('initiating write sequence');
+                console.log('initiating write sequence,file : '+fileName);
                 writeFile(fileEntry,obj,false);
             }
             else
-                console.log('initiating read sequence');
+                console.log('initiating read sequence,file : '+fileName);
                 readFile(fileEntry);
         }, function (error){
         console.log('File checkIfExistError : '+error.code);
         createFile(dirEntry, fileName,true);
-        checkIfExists(fileName,rw,obj);
+        //checkIfExists(fileName,rw,obj);
     });
     }, onErrorResolveURL);
 }
@@ -473,7 +506,9 @@ function readFile(fileEntry) {
         reader.onload = function() {
             //console.log("Successful file read: " + this.result);
             console.log('Read file : '+this.result);
+                                                                            console.log("this.result : "+this.result)
             temp=this.result;
+                                                                            console.log("temp : "+temp)                                                                     
             if(fileEntry.name!="lectures.txt"){
                 temp = this.result.replace('[','');
                 temp = temp.replace(']','');
@@ -492,10 +527,14 @@ function readFile(fileEntry) {
         };
 
         reader.onloadend = function() {
-            if(fileEntry.name=='lectures.txt')
-                updateTimeTable(this.result,false);
+            if(fileEntry.name=='lectures.txt'){
+
+                temp=JSON.parse(temp)
+                updateTimeTable(temp,false);
+            }
             else
                 init_placeholders();
+            console.log('hello form on load end : '+this.result)
         }
 
         reader.onerror = function(){
@@ -504,7 +543,7 @@ function readFile(fileEntry) {
 
         reader.readAsText(file);
         console.log('ReaderState : '+reader.readyState);
-        init_placeholders();
+        //init_placeholders();
     }, onErrorReadFile);
 }
 
@@ -523,13 +562,13 @@ function writeFile(fileEntry, dataObj, isAppend) {
     fileEntry.createWriter(function (fileWriter) {
 
         fileWriter.onwriteend = function() {
-            console.log("Successful file read...");
+            console.log("Successful file write...");
             readFile(fileEntry);
         };
 
 
         fileWriter.onerror = function (e) {
-            console.log("Failed file read: " + e.toString());
+            console.log("Failed file wirte " + e.toString());
         };
 
         // If we are appending data to file, go to the end of the file.

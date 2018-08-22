@@ -2544,7 +2544,7 @@ button.ui-btn-icon-notext,
 .ui-block-c,
 .ui-block-d,
 .ui-block-e {
-	margin: 0;
+	margin: 5;
 	padding: 0;
 	border: 0;
 	float: left;
@@ -2567,7 +2567,7 @@ li.ui-block-b,
 li.ui-block-c,
 li.ui-block-d,
 li.ui-block-e {
-	margin-left: 0;
+	margin-left: 0 ;
 	margin-right: 0;
 	padding: 0;
 	list-style: none;
@@ -2575,7 +2575,7 @@ li.ui-block-e {
 /* No margin in grids for 100% width button elements until we can use max-width: fill-available; */
 [class*="ui-block-"] > button.ui-btn {
 	margin-right: 0;
-	margin-left: 0;
+	margin-left: 10;
 }
 [class*="ui-block-"] > .ui-btn,
 [class*="ui-block-"] > .ui-select,
@@ -2592,14 +2592,14 @@ li.ui-block-e {
 .ui-grid-a > .ui-block-b {
 	/* width: 49.95%; IE7 */
 	/* margin-right: -.5px; BB5 */
-	width: 50%;
+	width: 88%;
 }
-.ui-grid-b > .ui-block-a,
+.ui-grid-a > .ui-block-b,
 .ui-grid-b > .ui-block-b,
 .ui-grid-b > .ui-block-c {
 	/* width: 33.25%; IE7 */
 	/* margin-right: -.5px; BB5 */
-	width: 33.333%;
+	width: 12%;
 }
 .ui-grid-c > .ui-block-a,
 .ui-grid-c > .ui-block-b,

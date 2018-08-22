@@ -161,11 +161,13 @@ function loaddata()
 
     var dirEntry ;
     var reader = new FileReader();
+    var meta = [3,3,3,3,3]
     //var fileName
 function init()
 {
     console.log('inside init()');
-     //dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, createDirEntry, onErrorResolveURL);
+     
+
 
     //Declaring variables for subject
         for(var i=0;i<12;++i)
@@ -175,7 +177,8 @@ function init()
     
 //Initialize files
 
-    checkIfExists('Sub.txt',false);
+    //checkIfExists('Sub.txt',false,S);
+    checkIfExists('lectures.txt',false)
 
 
     //Initialising placeholders
@@ -188,7 +191,7 @@ function init()
         alert('inside submit');
         for(var k=0;k<12;++k)
         {
-            [k] = new subject($("#S"+k+"Name").val(),0,0,0);
+            S[k] = new subject($("#S"+k+"Name").val(),0,0,0);
             $('#S'+k+'Name').attr("placeholder",S[k].name);
            
         }
@@ -196,13 +199,7 @@ function init()
         checkIfExists('Sub.txt',true);
     });
     
-    $('#TimetableSubmit').click(function(){
-        console.log('inside updateTimeTable');
-        
-        console.log($('#W0').val());
-        $('.L1.Wed').attr("name",$('#W0').val());
-        $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
-    });
+    $('#TimetableSubmit').click(updateTimeTable(meta,true));
     
     
 
@@ -258,6 +255,7 @@ function init()
 //Edit Time Table
 
     $('button.add-field').click(addField);
+    $(document).on('click','.remove',r3move)
 
 }
 
@@ -323,39 +321,99 @@ function saveProfile()
 
 //Edit Functions
 
-function updateTimeTable(){
-    console.log('inside updateTimeTable');
-    console.log($('#M0').val())
-     $('.L1 .Wed').attr("name",$('#M0').val());
-     $('input[value="1"].L1.Wed').parent().parent().parent().prev().html($('#W0').val());
+function updateTimeTable(meta,rw){
+    var dayslist = [".Mon",".Tue",".Wed",".Thur",".Fri"];
+    var days = new Array(6);
+    if(rw==true){
+        console.log('inside updateTimeTable');
+        
+        //days[5]=meta;
+        
+        for(var i=0;i<5;++i){
+            days[i]=$(""+dayslist[i]+".TT-input").map(function() {
+                        return $(this).val();
+                     }).get();
+        }
+        
+    }
+    else{
+        days[6]=meta;       
+    }
 
+ 
+    //injecting data in tables
+    for(var i=0;i<5;++i){
+        for(var j=0;j<days[i].length;++j){
+            //if(days[i].length<3)
+
+            //console.log('i : '+i+ ' j : '+j + days[i][j])
+
+
+            if(j<3){
+                console.log(days[i][j])
+                $('.L'+(j+1)+dayslist[i]+'').attr("name",days[i][j]);
+                $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().prev().first().html(days[i][j]);
+
+            }
+            else{
+                $('table'+dayslist[i]).append('<tr>\
+                                <td><b class="ui-table-cell-label">Subject</b>'+days[i][j]+'</td>\
+                                <td><b class="ui-table-cell-label">Present</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="1"></div></td>\
+                                <td><b class="ui-table-cell-label">Absent</b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="0"></div></td>\
+                                <td><b class="ui-table-cell-label"><span>NL</span></b><div class=" ui-radio"><input class="L3" type="radio" name="'+days[i][j]+'" value="-1"></div></td>\
+                            </tr>')
+            }
+
+        }
+    
+    if(meta!==0){
+        if(meta[i]>days[i].length){
+           for(var j=days[i].length;j<meta[i];++j){
+            $('input[value="1"].L'+(j+1)+dayslist[i]).parent().parent().parent().remove();
+           }
+
+        }
+     }  
+     days[5]=new Array(5);
+     for(var i=0;i<5;++i)
+        days[5][i]=days[i].length;
+    if(rw==true)
+        checkIfExists('lectures.txt',true,days)
+}
 }
 
-
 function addField(){
+    var inject;
     if($(this).hasClass('Mon')){
-        $(this).before('<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input type="text" placeholder="Lecture 3 "></div>')
+        inject='Mon'
         console.log('Monday')
     }
         
     else if($(this).hasClass('Tue')) {
+        inject="Tue"
         console.log('Tuesday')
     }
     else if($(this).hasClass('Wed')){
         console.log('Wednesday')
+        inject='Wed'
     }
 
     else if($(this).hasClass('Thur')){
         console.log('Thursday')
+        inject='Thur'
     }
 
     else if($(this).hasClass('Fri')){
         console.log('Friday')
+        inject='Fri'
     }
 
-    
+    $(this).before('<div class="ui-grid-a"><div class="ui-block-a ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input class="TT-input '+inject+'" type="text" placeholder="Lecture 3 " ></div><div class="ui-block-b"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-btn-inline ui-icon-minus remove" ></button></div></div>')
 }
 
+ function r3move(){
+    $(this).parent().parent().remove();
+ }
 
 //Analysis Team
 
@@ -383,13 +441,13 @@ $(document).on('change','#theme-flip',function() {
     //dirEntry.getFile
 }*/
 
-function checkIfExists(fileName,rw){
+function checkIfExists(fileName,rw,obj){
     window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry){
     dirEntry.getFile(fileName,{create:false, exclusive:false}, function(fileEntry)
         {
             if(rw==true){
                 console.log('initiating write sequence');
-                writeFile(fileEntry,S,false);
+                writeFile(fileEntry,obj,false);
             }
             else
                 console.log('initiating read sequence');
@@ -397,6 +455,7 @@ function checkIfExists(fileName,rw){
         }, function (error){
         console.log('File checkIfExistError : '+error.code);
         createFile(dirEntry, fileName,true);
+        //checkIfExists(fileName,rw,obj);
     });
     }, onErrorResolveURL);
 }
@@ -408,23 +467,31 @@ function readFile(fileEntry) {
         reader.onload = function() {
             //console.log("Successful file read: " + this.result);
             console.log('Read file : '+this.result);
-            temp = this.result.replace('[','');
-            temp = temp.replace(']','');
-            array= temp.split('},');
-            for(i=0;array[i]!=null;++i){
-              if(!array[i].includes('null'))
-              {
-                    if(array[i][array[i].length-1]!='}')
-                        array[i]=array[i]+'}';
-                    console.log(JSON.parse(array[i]));
-                    S[i]=JSON.parse(array[i]);
-              }
+            temp=this.result;
+            if(fileEntry.name!="lectures.txt"){
+                temp = this.result.replace('[','');
+                temp = temp.replace(']','');
+                array= temp.split('},');
+                for(i=0;array[i]!=null;++i){
+                  if(!array[i].includes('null'))
+                  {
+                        if(array[i][array[i].length-1]!='}')
+                            array[i]=array[i]+'}';
+                        console.log(JSON.parse(array[i]));
+                        S[i]=JSON.parse(array[i]);
+                  }
+            } 
             console.log('ReaderState.onprogress : '+reader.readyState);
             }
         };
 
         reader.onloadend = function() {
-            init_placeholders();
+            if(fileEntry.name=='lectures.txt')
+                
+                updateTimeTable(JSON.parse(temp),false);
+            else
+                init_placeholders();
+            console.log('hello form on load end : '+this.result)
         }
 
         reader.onerror = function(){
